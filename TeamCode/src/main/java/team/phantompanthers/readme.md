@@ -19,4 +19,4 @@ I don't want to have to debug your code to know what it does if it's confusing, 
 
 ## FOLLOW JAVA CODING CONVENTIONS!!!
 For example, packages are always lowercase and should be in the form of a domain in reverse (`com.example`), 
-classes, interfaces, enums, and annotations should be pascal case (`SomeClass`), and methods, fields, and variables should be camel case (`someMethod`).
+classes, interfaces, enums, and annotations should be pascal case (`SomeClass`), and methods, fields, parameters, and variables should be camel case (`someMethod`).
