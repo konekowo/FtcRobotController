@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class TestOpCode extends OpMode {
 
     public void init() {
-
+      telemetry.addData("Hello","World");
     }
 
     public void loop() {
