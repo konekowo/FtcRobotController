@@ -8,10 +8,17 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class TestOpCode extends OpMode {
 
     public void init() {
-      telemetry.addData("Hello","World");
+        telemetry.addData("We Are Live...",":3");
     }
 
     public void loop() {
-
+        //  Left Stick Registers in Left Direction
+        //  -1 <---0
+      if(gamepad1.left_stick_x < 0){
+          telemetry.addData("Left Stick","Received to the left");
+      } else if (gamepad1.left_stick_x > 0) {
+          //Left Stick Registers in Right Direction
+          telemetry.addData("Left Stick", "Received to the Right");
+      }
     }
 }
