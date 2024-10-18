@@ -20,5 +20,6 @@ public class TestOpCode extends OpMode {
           //Left Stick Registers in Right Direction
           telemetry.addData("Left Stick", "Received to the Right");
       }
+      telemetry.addData("GamePad Left Stick",gamepad1.left_stick_x);
     }
 }
