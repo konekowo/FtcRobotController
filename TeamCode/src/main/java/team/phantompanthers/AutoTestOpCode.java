@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @Autonomous
 public class AutoTestOpCode extends LinearOpMode implements Movement {
 
+    // Constructor for Class
     public AutoTestOpCode(DcMotor leftMotor,DcMotor rightMotor){
         runOpMode();
     }
@@ -17,6 +18,7 @@ public class AutoTestOpCode extends LinearOpMode implements Movement {
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
 
+        // Will Run when Init Is Pressed
         waitForStart();
         if (opModeIsActive()) {
             driveForward(1.0,2000);
@@ -29,6 +31,8 @@ public class AutoTestOpCode extends LinearOpMode implements Movement {
         }
     }
 
+
+    // Auto Movement Functions
     public void driveForward(double power, long time) {
         leftMotor.setPower(power);
         rightMotor.setPower(power);
