@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 // Code for the Operator Mode
 @TeleOp()
-public class TestOpCode extends OpMode {
+public class PlayerTestOpCode extends OpMode {
 
     public void init() {
         telemetry.addData("We Are Live...",":3");
