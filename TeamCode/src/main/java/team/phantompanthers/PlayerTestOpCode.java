@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 // Code for the Operator Mode
 @TeleOp()
-public class TestOpCode extends OpMode {
+public class PlayerTestOpCode extends OpMode {
 
     public void init() {
         telemetry.addData("We Are Live...",":3");
@@ -20,5 +20,6 @@ public class TestOpCode extends OpMode {
           //Left Stick Registers in Right Direction
           telemetry.addData("Left Stick", "Received to the Right");
       }
+      telemetry.addData("GamePad Left Stick",gamepad1.left_stick_x);
     }
 }
