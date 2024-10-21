@@ -7,12 +7,13 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @Autonomous
 public class AutoTestOpCode extends LinearOpMode implements Movement {
 
+    DcMotor leftMotor;
+    DcMotor rightMotor;
+
     // Constructor for Class
     public AutoTestOpCode(DcMotor leftMotor,DcMotor rightMotor){
         runOpMode();
     }
-        DcMotor leftMotor;
-        DcMotor rightMotor;
 
     public void runOpMode() {
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
@@ -33,18 +34,34 @@ public class AutoTestOpCode extends LinearOpMode implements Movement {
 
 
     // Auto Movement Functions
+
+    /**
+     * FTC Robot Motion
+     * @param power is the speed the Robot Will Go.
+     * @param time is how long it will last until next Method.
+     */
     public void driveForward(double power, long time) {
         leftMotor.setPower(power);
         rightMotor.setPower(power);
         sleep(time);
     }
 
+    /**
+     *
+     * @param power is the speed and direction the Robot Will Go (-power) means BackWards.
+     * @param time is how long it will last until next Method
+     */
     public void driveBackward(double power, long time) {
       leftMotor.setPower(-power);
       rightMotor.setPower(-power);
+      // Stops moving after time
       sleep(time);
     }
 
+
+    /**
+     * Completely Makes The Robot Stationary setting power to 0.
+     */
     public void stopMotion() {
       leftMotor.setPower(0);
       rightMotor.setPower(0);
