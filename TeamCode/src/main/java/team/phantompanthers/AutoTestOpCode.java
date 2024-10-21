@@ -4,6 +4,11 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+/**
+ * <h1>AutoTestOpCode Documentation</h1>
+ * A Autonomous OpMode for controlling a robot during the Driver Controlled period.
+ * this class extends LinearOpMode and implements Movement for more functionality.
+ */
 @Autonomous
 public class AutoTestOpCode extends LinearOpMode implements Movement {
 
@@ -47,7 +52,7 @@ public class AutoTestOpCode extends LinearOpMode implements Movement {
     }
 
     /**
-     *
+     * FTC ROBOT MOTION
      * @param power is the speed and direction the Robot Will Go (-power) means BackWards.
      * @param time is how long it will last until next Method
      */
