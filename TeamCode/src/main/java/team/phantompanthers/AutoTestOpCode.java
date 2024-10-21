@@ -47,7 +47,7 @@ public class AutoTestOpCode extends LinearOpMode implements Movement {
     }
 
     /**
-     *
+     * FTC ROBOT MOTION
      * @param power is the speed and direction the Robot Will Go (-power) means BackWards.
      * @param time is how long it will last until next Method
      */
