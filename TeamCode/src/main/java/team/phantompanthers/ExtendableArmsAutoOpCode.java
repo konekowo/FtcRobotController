@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 @Autonomous
 public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovement{
     DcMotor roboticArm;
+    DcMotor armExtender;
 
     /**
      * When The Class in Initialize This Constructor will run the OpMode.
@@ -37,6 +38,10 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
         roboticArm = hardwareMap.get(DcMotor.class, "robotic_Arm");
+
+        // Will Run when Init Is Pressed
+        waitForStart();
+        //TODO: Add Arm Movement Automatically //
     }
 
     /**
@@ -44,6 +49,7 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      * Rising The Arm
      * @param power -> power of the arm
      * @param time -> Duration of the arm
+     * @param arm -> arm of the robot
      */
     @Override
     public void raiseArm(double power, long time, @NotNull DcMotor arm) {
@@ -56,10 +62,11 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      * Lowering the Arm.
      * @param power -> power of the arm
      * @param time -> Duration of the arm
+     * @param arm -> Arm of the Robot
      */
     @Override
     public void lowerArm(double power, long time, @NotNull DcMotor arm) {
-        roboticArm.setPower(-power);
+        arm.setPower(-power);
         sleep(time);
     }
 
@@ -67,9 +74,11 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      * FTC Robot Controller
      * @param power -> Power of Extension
      * @param time -> Duration of Extension
-     */
+     * @param arm -> Arm of the Robot
+     * */
     @Override
     public void extendArm(double power, long time, @NotNull DcMotor arm) {
-
+        arm.setPower(power);
+        sleep(time);
     }
 }
