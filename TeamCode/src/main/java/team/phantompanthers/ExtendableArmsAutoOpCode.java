@@ -35,8 +35,6 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
         roboticArm = hardwareMap.get(DcMotor.class, "robotic_Arm");
-
-
     }
 
 
