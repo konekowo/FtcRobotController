@@ -3,6 +3,8 @@ package team.phantompanthers;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.jetbrains.annotations.NotNull;
+
 /*
  * <h1>ExtendableArmsAutoOpCode Documentation</h1>
  * This Class is for the for the Robot Is In Autonomous Mode and Extends it's Arm.
@@ -37,7 +39,6 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
         roboticArm = hardwareMap.get(DcMotor.class, "robotic_Arm");
     }
 
-
     /**
      * FTC Robot Controller
      * Rising The Arm
@@ -45,7 +46,7 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      * @param time -> Duration of the arm
      */
     @Override
-    public void raiseArm(double power, long time) {
+    public void raiseArm(double power, long time, @NotNull DcMotor arm) {
         roboticArm.setPower(power);
         sleep(time);
     }
@@ -57,7 +58,7 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      * @param time -> Duration of the arm
      */
     @Override
-    public void lowerArm(double power, long time) {
+    public void lowerArm(double power, long time, @NotNull DcMotor arm) {
         roboticArm.setPower(-power);
         sleep(time);
     }
@@ -68,7 +69,7 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      * @param time -> Duration of Extension
      */
     @Override
-    public void extendArm(double power, long time) {
+    public void extendArm(double power, long time, @NotNull DcMotor arm) {
 
     }
 }

@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * this class extends LinearOpMode and implements Movement for more functionality.
  */
 @Autonomous
-public class AutoTestOpCode extends LinearOpMode implements Movement {
+public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
 
     DcMotor leftMotor;
     DcMotor rightMotor;
