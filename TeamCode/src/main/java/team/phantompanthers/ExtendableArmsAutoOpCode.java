@@ -2,6 +2,7 @@ package team.phantompanthers;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.Range;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -84,11 +85,11 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
 
     @Override
     public void turnLeft(double leftPower, double rightPower, double drive, double turn, long time) {
-
+      // TODO: Make This Robot Turn Left
     }
 
     @Override
     public void turnRight(double leftPower, double rightPower, double drive, double turn, long time) {
-
+     // TODO: Make This Robot Turn Right
     }
 }
