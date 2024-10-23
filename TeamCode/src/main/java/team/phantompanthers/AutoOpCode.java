@@ -23,12 +23,6 @@ public class AutoOpCode extends ExtendableArmsAutoOpCode{
 
     @Override
     public void runOpMode() {
-        float forward = Controls.getFloat(gamepad1, ControlMappings.FORWARD);
-        float backward = Controls.getFloat(gamepad1, ControlMappings.BACKWARD);
-        float left = Controls.getFloat(gamepad1, ControlMappings.LEFT);
-        float right = Controls.getFloat(gamepad1, ControlMappings.RIGHT);
-        boolean extendArm = Controls.getBoolean(gamepad1, ControlMappings.EXTEND_ARM);
-        boolean retractArm = Controls.getBoolean(gamepad1, ControlMappings.RETRACT_ARM);
 
         // Will Run when Init Is Pressed
         waitForStart();

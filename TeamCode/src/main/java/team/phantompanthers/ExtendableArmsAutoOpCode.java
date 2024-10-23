@@ -36,13 +36,16 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      */
     @Override
     public void runOpMode() {
-        leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
-        rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
-        roboticArm = hardwareMap.get(DcMotor.class, "robotic_Arm");
+        topLeftMotor = hardwareMap.get(DcMotor.class, "left_motor");
+        topRightMotor = hardwareMap.get(DcMotor.class, "right_motor");
+        bottomLeftMotor = hardwareMap.get(DcMotor.class, "left_motor");
+        bottomRightMotor = hardwareMap.get(DcMotor.class, "right_motor");
 
         // Will Run when Init Is Pressed
         waitForStart();
-        //TODO: Add Arm Movement Automatically //
+        while(opModeIsActive()) {
+            telemetry.addData("Arm Status", "...Activated");
+        }
     }
 
     /**
@@ -54,7 +57,7 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      */
     @Override
     public void raiseArm(double power, long time, @NotNull DcMotor arm) {
-        roboticArm.setPower(power);
+        arm.setPower(power);
         sleep(time);
     }
 
