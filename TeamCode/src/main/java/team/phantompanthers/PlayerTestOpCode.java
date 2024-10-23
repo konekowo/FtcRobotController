@@ -1,7 +1,6 @@
 package team.phantompanthers;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
@@ -13,9 +12,9 @@ import com.qualcomm.robotcore.hardware.Gamepad;
  * It provides basic telemetry feedback and responds to gamepad joystick input.
  */
 @TeleOp()
-public abstract class PlayerTestOpCode extends LinearOpMode {
+public abstract class PlayerTestOpCode extends LinearOpMode implements Movement{
     Gamepad gamepad;
-    public PlayerTestOpCode(Gamepad gamepad){
+    public PlayerTestOpCode(Gamepad gamepad1){
 
     }
     @Override
