@@ -35,8 +35,8 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      */
     @Override
     public void runOpMode() {
-        leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
-        rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
+        topLeftMotor = hardwareMap.get(DcMotor.class, "top_left_motor");
+        topRightMotor = hardwareMap.get(DcMotor.class, "top_right_motor");
         roboticArm = hardwareMap.get(DcMotor.class, "robotic_Arm");
 
         // Will Run when Init Is Pressed
