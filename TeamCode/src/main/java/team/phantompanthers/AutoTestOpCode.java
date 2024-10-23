@@ -12,8 +12,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @Autonomous
 public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
 
-    DcMotor leftMotor;
-    DcMotor rightMotor;
+    DcMotor topLeftMotor;
+    DcMotor topRightMotor;
+    DcMotor bottomLeftMotor;
+    DcMotor bottomRightMotor;
 
     // Constructor for Class
     public AutoTestOpCode(DcMotor leftMotor,DcMotor rightMotor){
@@ -21,8 +23,10 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
     }
 
     public void runOpMode() {
-        leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
-        rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
+        topLeftMotor = hardwareMap.get(DcMotor.class, "left_motor");
+        topRightMotor = hardwareMap.get(DcMotor.class, "right_motor");
+        bottomLeftMotor = hardwareMap.get(DcMotor.class, "left_motor");
+        bottomRightMotor = hardwareMap.get(DcMotor.class, "right_motor");
 
         // Will Run when Init Is Pressed
         waitForStart();
@@ -46,8 +50,11 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
      * @param time is how long it will last until next Method.
      */
     public void driveForward(double power, long time) {
-        leftMotor.setPower(power);
-        rightMotor.setPower(power);
+       topLeftMotor.setPower(power);
+        topRightMotor.setPower(power);
+        bottomLeftMotor.setPower(power);
+        bottomRightMotor.setPower(power);
+        // Stops moving after time
         sleep(time);
     }
 
@@ -57,8 +64,10 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
      * @param time is how long it will last until next Method
      */
     public void driveBackward(double power, long time) {
-      leftMotor.setPower(-power);
-      rightMotor.setPower(-power);
+      topLeftMotor.setPower(-power);
+      topRightMotor.setPower(-power);
+      bottomLeftMotor.setPower(-power);
+      bottomRightMotor.setPower(-power);
       // Stops moving after time
       sleep(time);
     }
@@ -68,8 +77,10 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
      * Completely Makes The Robot Stationary setting power to 0.
      */
     public void stopMotion() {
-      leftMotor.setPower(0);
-      rightMotor.setPower(0);
+      topLeftMotor.setPower(0);
+      topRightMotor.setPower(0);
+      bottomLeftMotor.setPower(0);
+      bottomRightMotor.setPower(0);
     }
 }
 
