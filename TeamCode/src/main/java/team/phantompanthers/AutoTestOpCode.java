@@ -14,19 +14,20 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
 
     DcMotor topLeftMotor;
     DcMotor topRightMotor;
-    DcMotor BottomLeftMotor;
-    DcMotor BottomRightMotor;
+    DcMotor bottomLeftMotor;
+    DcMotor bottomRightMotor;
 
     // Constructor for Class
-    public AutoTestOpCode(DcMotor leftMotor,DcMotor topRightMotor){
+    public AutoTestOpCode(DcMotor leftMotor,DcMotor rightMotor){
         runOpMode();
     }
 
     public void runOpMode() {
-        topLeftMotor = hardwareMap.get(DcMotor.class, "top_left_motor");
-        topRightMotor = hardwareMap.get(DcMotor.class, "top_right_motor");
-        BottomRightMotor = hardwareMap.get(DcMotor.class, "bottom_right_motor");
-        BottomLeftMotor = hardwareMap.get(DcMotor.class, "bottom_left_motor");
+        topLeftMotor = hardwareMap.get(DcMotor.class, "left_motor");
+        topRightMotor = hardwareMap.get(DcMotor.class, "right_motor");
+        bottomLeftMotor = hardwareMap.get(DcMotor.class, "left_motor");
+        bottomRightMotor = hardwareMap.get(DcMotor.class, "right_motor");
+
         // Will Run when Init Is Pressed
         waitForStart();
         if (opModeIsActive()) {
@@ -49,10 +50,11 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
      * @param time is how long it will last until next Method.
      */
     public void driveForward(double power, long time) {
-        topLeftMotor.setPower(power);
+       topLeftMotor.setPower(power);
         topRightMotor.setPower(power);
-        BottomLeftMotor.setPower(power);
-        BottomRightMotor.setPower(power);
+        bottomLeftMotor.setPower(power);
+        bottomRightMotor.setPower(power);
+        // Stops moving after time
         sleep(time);
     }
 
@@ -64,8 +66,8 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
     public void driveBackward(double power, long time) {
       topLeftMotor.setPower(-power);
       topRightMotor.setPower(-power);
-      BottomLeftMotor.setPower(-power);
-      BottomRightMotor.setPower(-power);
+      bottomLeftMotor.setPower(-power);
+      bottomRightMotor.setPower(-power);
       // Stops moving after time
       sleep(time);
     }
@@ -77,8 +79,8 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
     public void stopMotion() {
       topLeftMotor.setPower(0);
       topRightMotor.setPower(0);
-      BottomLeftMotor.setPower(0);
-      BottomRightMotor.setPower(0);
+      bottomLeftMotor.setPower(0);
+      bottomRightMotor.setPower(0);
     }
 }
 
