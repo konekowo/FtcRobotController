@@ -16,5 +16,7 @@ interface Movement{
      * @param time  is the duration of the robot
      */
     fun driveBackward(power: Double, time:Long)
+    fun driveLeft(power: Double, time: Long)
+    fun driveRight(power: Double, time: Long)
     fun stopMotion()
 }

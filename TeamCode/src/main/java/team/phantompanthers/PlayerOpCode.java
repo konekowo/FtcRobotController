@@ -20,7 +20,10 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode{
 
        waitForStart();
        while(opModeIsActive()) {
-           //TODO: Add Gamepad Controls
+           driveForward(Forward,0);
+           driveBackward(Backward,0);
+           driveLeft(Left,0);
+           driveRight(Right,0);
        }
     }
 }
