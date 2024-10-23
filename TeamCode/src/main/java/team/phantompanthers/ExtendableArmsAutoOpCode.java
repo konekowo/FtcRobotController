@@ -81,4 +81,14 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
         arm.setPower(power);
         sleep(time);
     }
+
+    @Override
+    public void turnLeft(double leftPower, double rightPower, double drive, double turn, long time) {
+
+    }
+
+    @Override
+    public void turnRight(double leftPower, double rightPower, double drive, double turn, long time) {
+
+    }
 }
