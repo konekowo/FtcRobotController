@@ -1,4 +1,26 @@
 package team.phantompanthers;
 
-public class PlayerOpCode {
+import com.qualcomm.robotcore.hardware.Gamepad;
+
+public class PlayerOpCode extends ExtendableArmsPlayerOpCode{
+    /**
+     * When The Class in Initialize This Constructor will run the OpMode.
+     *
+     * @param gamepad -> Gamepad of the Robot
+     */
+    public PlayerOpCode(Gamepad gamepad) {
+        super(gamepad);
+    }
+    @Override
+    public void runOpMode() {
+        float Forward = Controls.getFloat(gamepad1,ControlMappings.FORWARD);
+        float Backward = Controls.getFloat(gamepad1,ControlMappings.BACKWARD);
+        float Left = Controls.getFloat(gamepad1,ControlMappings.LEFT);
+        float Right = Controls.getFloat(gamepad1,ControlMappings.RIGHT);
+
+       waitForStart();
+       while(opModeIsActive()) {
+           //TODO: Add Gamepad Controls
+       }
+    }
 }

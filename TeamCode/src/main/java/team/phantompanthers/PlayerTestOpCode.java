@@ -2,6 +2,7 @@ package team.phantompanthers;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 /**
@@ -13,10 +14,14 @@ import com.qualcomm.robotcore.hardware.Gamepad;
  */
 @TeleOp()
 public abstract class PlayerTestOpCode extends LinearOpMode implements Movement{
-    Gamepad gamepad;
-    public PlayerTestOpCode(Gamepad gamepad1){
+    DcMotor topLeftMotor;
+    DcMotor topRightMotor;
+    DcMotor bottomLeftMotor;
+    DcMotor bottomRightMotor;
 
+    public PlayerTestOpCode(Gamepad gamepad) {
     }
+
     @Override
     public void runOpMode() throws InterruptedException {
     }
