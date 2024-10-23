@@ -21,26 +21,44 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
         super(gamepad);
     }
 
-
+    /**
+     * What Will Run During Op Mode
+     */
     @Override
     public void runOpMode(){
-        if(gamepad.a){
-            raiseArm(1.0,1000,roboticArm);
-        }
-        if(gamepad.b){
-            lowerArm(1.0,1000,roboticArm);
-        }
-        if(gamepad.x){
-            extendArm(1.0,1000,roboticArm);
-        }
-        if (gamepad.left_stick_y < 0) {
-            driveBackward(3.0,500);
-        }
-        if (gamepad.left_stick_y > 0) {
-            driveForward(3.0,500);
-        }
-        if (gamepad.right_bumper && gamepad.left_bumper){
-            stopMotion();
+        // TODO: Find a Way to make power run until lack of input //
+        leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
+        rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
+        roboticArm = hardwareMap.get(DcMotor.class, "robotic_Arm");
+
+        // Will Run when Init Is Pressed
+        waitForStart();
+        while(opModeIsActive()) {
+
+            if (gamepad.a) {
+                telemetry.addData("Arm Status", "Rising");
+                raiseArm(1.0, 1000, roboticArm);
+            }
+            if (gamepad.b) {
+                telemetry.addData("Arm Status", "Lowering");
+                lowerArm(1.0, 1000, roboticArm);
+            }
+            if (gamepad.x) {
+                telemetry.addData("Arm Status", "Extending");
+                extendArm(1.0, 1000, roboticArm);
+            }
+            if (gamepad.left_stick_y < 0) {
+                telemetry.addData("Drive Status", "Moving Forward");
+                driveBackward(3.0, 500);
+            }
+            if (gamepad.left_stick_y > 0) {
+                telemetry.addData("Drive Status", "Moving Backward");
+                driveForward(3.0, 500);
+            }
+            if (gamepad.right_bumper && gamepad.left_bumper) {
+                telemetry.addData("Drive Status", "Stopping");
+                stopMotion();
+            }
         }
     }
 
