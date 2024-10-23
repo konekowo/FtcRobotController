@@ -17,8 +17,15 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
     DcMotor rightMotor;
     DcMotor roboticArm;
 
+
+    /**
+     * When The Class in Initialize This Constructor will run the OpMode.
+     *
+     * @param gamepad -> Gamepad of the Robot
+     */
     public ExtendableArmsPlayerOpCode(Gamepad gamepad) {
         super(gamepad);
+        runOpMode();
     }
 
     /**
