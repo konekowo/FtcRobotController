@@ -21,9 +21,15 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
         super(gamepad);
     }
 
-
+    /**
+     * What Will Run During Op Mode
+     */
     @Override
     public void runOpMode(){
+        // TODO: Find a Way to make power run until lack of input //
+        leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
+        rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
+        roboticArm = hardwareMap.get(DcMotor.class, "robotic_Arm");
         if(gamepad.a){
             raiseArm(1.0,1000,roboticArm);
         }
