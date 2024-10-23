@@ -3,6 +3,7 @@ package team.phantompanthers;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.util.Range;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -105,5 +106,20 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
     public void stopMotion() {
         leftMotor.setPower(0);
         rightMotor.setPower(0);
+    }
+
+    @Override
+    public void turnLeft(double leftPower, double rightPower, double drive, double turn, long time) {
+        drive = -gamepad1.left_stick_y;
+        turn  =  gamepad1.right_stick_x;
+        leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
+        rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
+        leftMotor.setPower(leftPower);
+        rightMotor.setPower(rightPower);
+    }
+
+    @Override
+    public void turnRight(double leftPower, double rightPower, double drive, double turn, long time) {
+
     }
 }
