@@ -73,4 +73,18 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
         bottomLeftMotor.setPower(0);
         bottomRightMotor.setPower(0);
     }
+
+    @Override
+    public void driveLeft(double power, long time) {
+        topLeftMotor.setPower(power);
+        bottomRightMotor.setPower(power);
+        sleep(time);
+    }
+
+    @Override
+    public void driveRight(double power, long time) {
+      topRightMotor.setPower(power);
+      bottomLeftMotor.setPower(power);
+      sleep(time);
+    }
 }
