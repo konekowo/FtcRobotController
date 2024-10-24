@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor
  *
  * Also For Extending the Robot Arms.
  */
-interface ArmMovement : Movement{
+interface ArmMovement : Movement {
     /**
      * @param power is the speed of the robot arm
      * @param time is the duration of the robot arm raising
@@ -21,6 +21,7 @@ interface ArmMovement : Movement{
      * @param arm is the motor of the robot arm.
      */
     fun lowerArm(power: Double, time: Long, arm: DcMotor)
+
     /**
      * @param power is the speed of the robot arm extending
      * @param time is the duration of the robot arm extending

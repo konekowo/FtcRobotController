@@ -1,8 +1,9 @@
 package team.phantompanthers;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-public class PlayerOpCode extends ExtendableArmsPlayerOpCode{
+public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
     /**
      * When The Class in Initialize This Constructor will run the OpMode.
      *
@@ -11,19 +12,44 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode{
     public PlayerOpCode(Gamepad gamepad) {
         super(gamepad);
     }
+
+    /**
+     * What Will Run During Op Mode
+     */
     @Override
     public void runOpMode() {
-        float Forward = Controls.getFloat(gamepad1,ControlMappings.FORWARD);
-        float Backward = Controls.getFloat(gamepad1,ControlMappings.BACKWARD);
-        float Left = Controls.getFloat(gamepad1,ControlMappings.LEFT);
-        float Right = Controls.getFloat(gamepad1,ControlMappings.RIGHT);
+        topLeftMotor = hardwareMap.get(DcMotor.class, "top_left_motor");
+        topRightMotor = hardwareMap.get(DcMotor.class, "top_right_motor");
+        bottomLeftMotor = hardwareMap.get(DcMotor.class, "bottom_left_motor");
+        bottomRightMotor = hardwareMap.get(DcMotor.class, "bottom_right_motor");
 
-       waitForStart();
-       while(opModeIsActive()) {
-           driveForward(Forward,0);
-           driveBackward(Backward,0);
-           driveLeft(Left,0);
-           driveRight(Right,0);
-       }
+        float Forward = Controls.getFloat(gamepad1, ControlMappings.FORWARD);
+        float Backward = Controls.getFloat(gamepad1, ControlMappings.BACKWARD);
+        float Left = Controls.getFloat(gamepad1, ControlMappings.LEFT);
+        float Right = Controls.getFloat(gamepad1, ControlMappings.RIGHT);
+        boolean Extend = Controls.getBoolean(gamepad1, ControlMappings.EXTEND_ARM);
+        boolean Retract = Controls.getBoolean(gamepad1, ControlMappings.RETRACT_ARM);
+        boolean Raise = Controls.getBoolean(gamepad1, ControlMappings.RAISE_ARM);
+        boolean Lower = Controls.getBoolean(gamepad1, ControlMappings.LOWER_ARM);
+        waitForStart();
+        while (opModeIsActive()) {
+            driveForward(Forward, 0);
+            driveBackward(Backward, 0);
+            driveLeft(Left, 0);
+            driveRight(Right, 0);
+
+            if (Extend) {
+                extendArm(1.0, 0, armExtender);
+            }
+            if (Retract) {
+                extendArm(-1.0, 0, armExtender);
+            }
+            if (Raise) {
+                raiseArm(1.0, 0, roboticArm);
+            }
+            if (Lower) {
+                lowerArm(1.0, 0, roboticArm);
+            }
+        }
     }
 }
