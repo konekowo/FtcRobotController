@@ -2,6 +2,12 @@ package team.phantompanthers;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+/**
+ * <h1>Controls Value Collector Documentation</h1>
+ * <p>Control Value Collector is a class that returns each Gamepad button as a boolean or float collecting Input.</p>
+ * @author konekowo
+ * @author BeanZip
+ */
 public class Controls {
 
     /**
