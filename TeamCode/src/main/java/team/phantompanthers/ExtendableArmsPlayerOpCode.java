@@ -11,12 +11,10 @@ import org.jetbrains.annotations.NotNull;
  * ExtendableArmsPlayerCode is for the Robot Is In TeleOp Mode and Extends it's Arm.
  * It Extends PlayerOpCode and adds Manual Controls.
  */
-@TeleOp(name="ExtendableArmsPlayerOpCode", group="Linear Opmode")
-public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmMovement{
-    DcMotor leftMotor;
-    DcMotor rightMotor;
+@TeleOp(name = "ExtendableArmsPlayerOpCode", group = "Linear Opmode")
+public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmMovement {
     DcMotor roboticArm;
-
+    DcMotor armExtender;
 
     /**
      * When The Class in Initialize This Constructor will run the OpMode.
@@ -25,49 +23,11 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
      */
     public ExtendableArmsPlayerOpCode(Gamepad gamepad) {
         super(gamepad);
-        runOpMode();
     }
 
     /**
      * What Will Run During Op Mode
      */
-    @Override
-    public void runOpMode(){
-        // TODO: Find a Way to make power run until lack of input //
-        leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
-        rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
-        roboticArm = hardwareMap.get(DcMotor.class, "robotic_Arm");
-
-        // Will Run when Init Is Pressed
-        waitForStart();
-        while(opModeIsActive()) {
-
-            if (gamepad.a) {
-                telemetry.addData("Arm Status", "Rising");
-                raiseArm(1.0, 1000, roboticArm);
-            }
-            if (gamepad.b) {
-                telemetry.addData("Arm Status", "Lowering");
-                lowerArm(1.0, 1000, roboticArm);
-            }
-            if (gamepad.x) {
-                telemetry.addData("Arm Status", "Extending");
-                extendArm(1.0, 1000, roboticArm);
-            }
-            if (gamepad.left_stick_y < 0) {
-                telemetry.addData("Drive Status", "Moving Forward");
-                driveBackward(3.0, 500);
-            }
-            if (gamepad.left_stick_y > 0) {
-                telemetry.addData("Drive Status", "Moving Backward");
-                driveForward(3.0, 500);
-            }
-            if (gamepad.right_bumper && gamepad.left_bumper) {
-                telemetry.addData("Drive Status", "Stopping");
-                stopMotion();
-            }
-        }
-    }
 
     @Override
     public void raiseArm(double power, long time, @NotNull DcMotor arm) {
@@ -77,33 +37,58 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
 
     @Override
     public void lowerArm(double power, long time, @NotNull DcMotor arm) {
-      arm.setPower(power);
-      sleep(time);
-    }
-
-    @Override
-    public void extendArm(double power, long time, @NotNull DcMotor arm) {
-      arm.setPower(power);
-      sleep(time);
-    }
-
-    @Override
-    public void driveForward(double power, long time) {
-     leftMotor.setPower(power);
-     rightMotor.setPower(power);
-     sleep(time);
-    }
-
-    @Override
-    public void driveBackward(double power, long time) {
-        leftMotor.setPower(-power);
-        rightMotor.setPower(-power);
+        arm.setPower(power);
         sleep(time);
     }
 
     @Override
-    public void stopMotion() {
-        leftMotor.setPower(0);
-        rightMotor.setPower(0);
+    public void extendArm(double power, long time, @NotNull DcMotor arm) {
+        arm.setPower(power);
+        sleep(time);
+    }
+
+    @Override
+    public void driveForward(double power, long time) {
+        telemetry.addData("Forward Motor Turn", power);
+        motorSystem.setPower("top_left_motor", power);
+        motorSystem.setPower("top_right_motor", power);
+        motorSystem.setPower("bottom_left_motor", power);
+        motorSystem.setPower("bottom_right_motor", power);
+        sleep(time);
+    }
+
+    @Override
+    public void driveBackward(double power, long time) {
+        telemetry.addData("Backward Motor Turn", power);
+        motorSystem.setPower("top_left_motor", -power);
+        motorSystem.setPower("top_right_motor", -power);
+        motorSystem.setPower("bottom_left_motor", -power);
+        motorSystem.setPower("bottom_right_motor", -power);
+        sleep(time);
+    }
+
+    @Override
+    public void stopMotion(){
+        telemetry.addData("Stop Motion", "...Activated");
+        motorSystem.setPower("top_left_motor", 0);
+        motorSystem.setPower("top_right_motor", 0);
+        motorSystem.setPower("bottom_left_motor", 0);
+        motorSystem.setPower("bottom_right_motor", 0);
+    }
+
+    @Override
+    public void driveLeft(double power, long time) {
+        telemetry.addData("Left Motor Turn", power);
+        motorSystem.setPower("top_left_motor", power);
+        motorSystem.setPower("bottom_right_motor", power);
+        sleep(time);
+    }
+
+    @Override
+    public void driveRight(double power, long time) {
+        telemetry.addData("Right Motor Turn", power);
+        motorSystem.setPower("top_right_motor", power);
+        motorSystem.setPower("bottom_left_motor", power);
+        sleep(time);
     }
 }

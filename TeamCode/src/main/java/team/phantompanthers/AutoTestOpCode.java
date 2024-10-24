@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import java.util.HashMap;
+
 /**
  * <h1>AutoTestOpCode Documentation</h1>
  * A Autonomous OpMode for controlling a robot during the Driver Controlled period.
@@ -12,30 +14,27 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @Autonomous
 public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
 
-    DcMotor topLeftMotor;
-    DcMotor topRightMotor;
-    DcMotor BottomLeftMotor;
-    DcMotor BottomRightMotor;
-
+     protected MotorSystem motorSystem = new MotorSystem(hardwareMap);
     // Constructor for Class
-    public AutoTestOpCode(DcMotor leftMotor,DcMotor topRightMotor){
+    public AutoTestOpCode(DcMotor leftMotor, DcMotor rightMotor) {
         runOpMode();
     }
 
     public void runOpMode() {
-        topLeftMotor = hardwareMap.get(DcMotor.class, "top_left_motor");
-        topRightMotor = hardwareMap.get(DcMotor.class, "top_right_motor");
-        BottomRightMotor = hardwareMap.get(DcMotor.class, "bottom_right_motor");
-        BottomLeftMotor = hardwareMap.get(DcMotor.class, "bottom_left_motor");
+       motorSystem.addMotor("top_left_motor");
+       motorSystem.addMotor("top_right_motor");
+       motorSystem.addMotor("bottom_left_motor");
+       motorSystem.addMotor("bottom_right_motor");
+
         // Will Run when Init Is Pressed
         waitForStart();
         if (opModeIsActive()) {
-            driveForward(1.0,2000);
+            driveForward(1.0, 2000);
 
             stopMotion();
             sleep(1000);
 
-            driveBackward(1.0,2000);
+            driveBackward(1.0, 2000);
             stopMotion();
         }
     }
@@ -45,29 +44,32 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
 
     /**
      * FTC Robot Motion
+     *
      * @param power is the speed the Robot Will Go.
-     * @param time is how long it will last until next Method.
+     * @param time  is how long it will last until next Method.
      */
     public void driveForward(double power, long time) {
-        topLeftMotor.setPower(power);
-        topRightMotor.setPower(power);
-        BottomLeftMotor.setPower(power);
-        BottomRightMotor.setPower(power);
+        motorSystem.setPower("top_left_motor", power);
+        motorSystem.setPower("top_right_motor", power);
+        motorSystem.setPower("bottom_left_motor", power);
+        motorSystem.setPower("bottom_right_motor", power);
+        // Stops moving after time
         sleep(time);
     }
 
     /**
      * FTC ROBOT MOTION
+     *
      * @param power is the speed and direction the Robot Will Go (-power) means BackWards.
-     * @param time is how long it will last until next Method
+     * @param time  is how long it will last until next Method
      */
     public void driveBackward(double power, long time) {
-      topLeftMotor.setPower(-power);
-      topRightMotor.setPower(-power);
-      BottomLeftMotor.setPower(-power);
-      BottomRightMotor.setPower(-power);
-      // Stops moving after time
-      sleep(time);
+        motorSystem.setPower("top_left_motor", -power);
+        motorSystem.setPower("top_right_motor", -power);
+        motorSystem.setPower("bottom_left_motor", -power);
+        motorSystem.setPower("bottom_right_motor", -power);
+        // Stops moving after time
+        sleep(time);
     }
 
 
@@ -75,10 +77,10 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
      * Completely Makes The Robot Stationary setting power to 0.
      */
     public void stopMotion() {
-      topLeftMotor.setPower(0);
-      topRightMotor.setPower(0);
-      BottomLeftMotor.setPower(0);
-      BottomRightMotor.setPower(0);
+        motorSystem.setPower("top_left_motor", 0);
+        motorSystem.setPower("top_right_motor", 0);
+        motorSystem.setPower("bottom_left_motor", 0);
+        motorSystem.setPower("bottom_right_motor", 0);
     }
 }
 
