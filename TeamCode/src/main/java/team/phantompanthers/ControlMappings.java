@@ -1,5 +1,4 @@
 package team.phantompanthers;
-
 public enum ControlMappings {
     FORWARD,
     BACKWARD,
