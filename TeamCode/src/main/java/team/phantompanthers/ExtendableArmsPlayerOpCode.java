@@ -49,41 +49,46 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
 
     @Override
     public void driveForward(double power, long time) {
-        topLeftMotor.setPower(power);
-        topRightMotor.setPower(power);
-        bottomLeftMotor.setPower(power);
-        bottomRightMotor.setPower(power);
+        telemetry.addData("Forward Motor Turn", power);
+        motorSystem.setPower("top_left_motor", power);
+        motorSystem.setPower("top_right_motor", power);
+        motorSystem.setPower("bottom_left_motor", power);
+        motorSystem.setPower("bottom_right_motor", power);
         sleep(time);
     }
 
     @Override
     public void driveBackward(double power, long time) {
-        topLeftMotor.setPower(-power);
-        topRightMotor.setPower(-power);
-        bottomLeftMotor.setPower(-power);
-        bottomRightMotor.setPower(-power);
+        telemetry.addData("Backward Motor Turn", power);
+        motorSystem.setPower("top_left_motor", -power);
+        motorSystem.setPower("top_right_motor", -power);
+        motorSystem.setPower("bottom_left_motor", -power);
+        motorSystem.setPower("bottom_right_motor", -power);
         sleep(time);
     }
 
     @Override
-    public void stopMotion() {
-        topLeftMotor.setPower(0);
-        topRightMotor.setPower(0);
-        bottomLeftMotor.setPower(0);
-        bottomRightMotor.setPower(0);
+    public void stopMotion(){
+        telemetry.addData("Stop Motion", "...Activated");
+        motorSystem.setPower("top_left_motor", 0);
+        motorSystem.setPower("top_right_motor", 0);
+        motorSystem.setPower("bottom_left_motor", 0);
+        motorSystem.setPower("bottom_right_motor", 0);
     }
 
     @Override
     public void driveLeft(double power, long time) {
-        topLeftMotor.setPower(power);
-        bottomRightMotor.setPower(power);
+        telemetry.addData("Left Motor Turn", power);
+        motorSystem.setPower("top_left_motor", power);
+        motorSystem.setPower("bottom_right_motor", power);
         sleep(time);
     }
 
     @Override
     public void driveRight(double power, long time) {
-        topRightMotor.setPower(power);
-        bottomLeftMotor.setPower(power);
+        telemetry.addData("Right Motor Turn", power);
+        motorSystem.setPower("top_right_motor", power);
+        motorSystem.setPower("bottom_left_motor", power);
         sleep(time);
     }
 }

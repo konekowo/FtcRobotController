@@ -34,10 +34,10 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      */
     @Override
     public void runOpMode() {
-        topLeftMotor = hardwareMap.get(DcMotor.class, "left_motor");
-        topRightMotor = hardwareMap.get(DcMotor.class, "right_motor");
-        bottomLeftMotor = hardwareMap.get(DcMotor.class, "left_motor");
-        bottomRightMotor = hardwareMap.get(DcMotor.class, "right_motor");
+        motorSystem.addMotor("top_left_motor");
+        motorSystem.addMotor("top_right_motor");
+        motorSystem.addMotor("bottom_left_motor");
+        motorSystem.addMotor("bottom_right_motor");
 
         // Will Run when Init Is Pressed
         waitForStart();
@@ -87,17 +87,30 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
         sleep(time);
     }
 
+    /**
+     * FTC Robot Controller
+     * @param power -> power of the robot movement
+     * @param time -> Duration of the movement
+     */
     @Override
     public void driveLeft(double power, long time) {
-        topLeftMotor.setPower(power);
-        bottomRightMotor.setPower(power);
+        telemetry.addData("Left Motor Turn", power);
+        motorSystem.setPower("top_left_motor", power);
+        motorSystem.setPower("bottom_right_motor", power);
+        sleep(time);
         sleep(time);
     }
 
+    /**
+     * FTC Robot Controller
+     * @param power -> power of the robot movement
+     * @param time -> Duration of the movement
+     */
     @Override
     public void driveRight(double power, long time) {
-        topRightMotor.setPower(power);
-        bottomLeftMotor.setPower(power);
+        telemetry.addData("Right Motor Turn", power);
+        motorSystem.setPower("top_right_motor", power);
+        motorSystem.setPower("bottom_left_motor", power);
         sleep(time);
     }
 }

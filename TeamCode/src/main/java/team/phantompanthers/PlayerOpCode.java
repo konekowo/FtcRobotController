@@ -12,16 +12,17 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
     public PlayerOpCode(Gamepad gamepad) {
         super(gamepad);
     }
+    MotorSystem motorSystem = new MotorSystem(hardwareMap);
 
     /**
      * What Will Run During Op Mode
      */
     @Override
     public void runOpMode() {
-        topLeftMotor = hardwareMap.get(DcMotor.class, "top_left_motor");
-        topRightMotor = hardwareMap.get(DcMotor.class, "top_right_motor");
-        bottomLeftMotor = hardwareMap.get(DcMotor.class, "bottom_left_motor");
-        bottomRightMotor = hardwareMap.get(DcMotor.class, "bottom_right_motor");
+        motorSystem.addMotor("top_left_motor");
+        motorSystem.addMotor("top_right_motor");
+        motorSystem.addMotor("bottom_left_motor");
+        motorSystem.addMotor("bottom_right_motor");
 
         float Forward = Controls.getFloat(gamepad1, ControlMappings.FORWARD);
         float Backward = Controls.getFloat(gamepad1, ControlMappings.BACKWARD);

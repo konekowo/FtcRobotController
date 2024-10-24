@@ -14,10 +14,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
  */
 @TeleOp()
 public abstract class PlayerTestOpCode extends LinearOpMode implements Movement {
-    DcMotor topLeftMotor;
-    DcMotor topRightMotor;
-    DcMotor bottomLeftMotor;
-    DcMotor bottomRightMotor;
+    protected MotorSystem motorSystem = new MotorSystem(hardwareMap);
 
     public PlayerTestOpCode(Gamepad gamepad) {
     }
