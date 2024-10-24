@@ -3,7 +3,6 @@ package team.phantompanthers;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
-import com.qualcomm.robotcore.util.Range;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -12,8 +11,8 @@ import org.jetbrains.annotations.NotNull;
  * ExtendableArmsPlayerCode is for the Robot Is In TeleOp Mode and Extends it's Arm.
  * It Extends PlayerOpCode and adds Manual Controls.
  */
-@TeleOp(name="ExtendableArmsPlayerOpCode", group="Linear Opmode")
-public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmMovement{
+@TeleOp(name = "ExtendableArmsPlayerOpCode", group = "Linear Opmode")
+public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmMovement {
     DcMotor roboticArm;
     DcMotor armExtender;
 
@@ -38,23 +37,23 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
 
     @Override
     public void lowerArm(double power, long time, @NotNull DcMotor arm) {
-      arm.setPower(power);
-      sleep(time);
+        arm.setPower(power);
+        sleep(time);
     }
 
     @Override
     public void extendArm(double power, long time, @NotNull DcMotor arm) {
-      arm.setPower(power);
-      sleep(time);
+        arm.setPower(power);
+        sleep(time);
     }
 
     @Override
     public void driveForward(double power, long time) {
-     topLeftMotor.setPower(power);
-     topRightMotor.setPower(power);
-     bottomLeftMotor.setPower(power);
-     bottomRightMotor.setPower(power);
-     sleep(time);
+        topLeftMotor.setPower(power);
+        topRightMotor.setPower(power);
+        bottomLeftMotor.setPower(power);
+        bottomRightMotor.setPower(power);
+        sleep(time);
     }
 
     @Override
@@ -83,8 +82,8 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
 
     @Override
     public void driveRight(double power, long time) {
-      topRightMotor.setPower(power);
-      bottomLeftMotor.setPower(power);
-      sleep(time);
+        topRightMotor.setPower(power);
+        bottomLeftMotor.setPower(power);
+        sleep(time);
     }
 }

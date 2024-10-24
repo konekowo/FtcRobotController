@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * <h1>AutoOpCode Documentation</h1>
  * The Actual TeleOp Code for the FTC Into the deep for the Phantom Panthers,
  */
-@TeleOp(name="PlayerOpCode", group="Linear Opmode")
-public class AutoOpCode extends ExtendableArmsAutoOpCode{
+@TeleOp(name = "PlayerOpCode", group = "Linear Opmode")
+public class AutoOpCode extends ExtendableArmsAutoOpCode {
     /**
      * When The Class in Initialize This Constructor will run the OpMode.
      *
@@ -26,7 +26,7 @@ public class AutoOpCode extends ExtendableArmsAutoOpCode{
 
         // Will Run when Init Is Pressed
         waitForStart();
-        while(opModeIsActive()) {
+        while (opModeIsActive()) {
 
         }
     }

@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
  * It provides basic telemetry feedback and responds to gamepad joystick input.
  */
 @TeleOp()
-public abstract class PlayerTestOpCode extends LinearOpMode implements Movement{
+public abstract class PlayerTestOpCode extends LinearOpMode implements Movement {
     DcMotor topLeftMotor;
     DcMotor topRightMotor;
     DcMotor bottomLeftMotor;

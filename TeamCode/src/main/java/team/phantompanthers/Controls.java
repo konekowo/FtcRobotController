@@ -6,6 +6,7 @@ public class Controls {
 
     /**
      * Returns a boolean based on if the control mapping is pressed.
+     *
      * @param gamepad The gamepad to check
      * @param control The control to check
      * @return The returned value
@@ -27,6 +28,7 @@ public class Controls {
 
     /**
      * Returns a float based on if the control mapping is active.
+     *
      * @param gamepad The gamepad to check
      * @param control The control to check
      * @return The returned value
