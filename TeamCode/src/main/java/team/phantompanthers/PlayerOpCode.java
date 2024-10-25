@@ -1,8 +1,10 @@
 package team.phantompanthers;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+@TeleOp(name = "PlayerOpCode", group = "Linear Opmode")
 public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
     /**
      * When The Class in Initialize This Constructor will run the OpMode.
@@ -11,6 +13,7 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
      */
     public PlayerOpCode(Gamepad gamepad) {
         super(gamepad);
+        runOpMode();
     }
     MotorSystem motorSystem = new MotorSystem(hardwareMap);
 
