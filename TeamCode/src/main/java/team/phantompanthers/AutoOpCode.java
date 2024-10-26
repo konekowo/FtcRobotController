@@ -24,11 +24,15 @@ public class AutoOpCode extends ExtendableArmsAutoOpCode {
 
     @Override
     public void runOpMode() {
+        motorSystem.addMotor("top_left_motor");
+        motorSystem.addMotor("top_right_motor");
+        motorSystem.addMotor("bottom_left_motor");
+        motorSystem.addMotor("bottom_right_motor");
 
         // Will Run when Init Is Pressed
         waitForStart();
         while (opModeIsActive()) {
-
+            // TODO: Add Auto Code //
         }
     }
 }
