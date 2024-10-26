@@ -1,7 +1,6 @@
 package team.phantompanthers;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 @TeleOp(name = "PlayerOpCode", group = "Linear Opmode")
@@ -29,31 +28,19 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         motorSystem.addMotor("arm_extender");
         motorSystem.addMotor("robotic_arm");
 
-        float Forward = Controls.getFloat(gamepad1, ControlMappings.FORWARD);
-        float Backward = Controls.getFloat(gamepad1, ControlMappings.BACKWARD);
-        float Left = Controls.getFloat(gamepad1, ControlMappings.LEFT);
-        float Right = Controls.getFloat(gamepad1, ControlMappings.RIGHT);
-        boolean Extend = Controls.getBoolean(gamepad1, ControlMappings.EXTEND_ARM);
-        boolean Retract = Controls.getBoolean(gamepad1, ControlMappings.RETRACT_ARM);
-        boolean Raise = Controls.getBoolean(gamepad1, ControlMappings.RAISE_ARM);
-        boolean Lower = Controls.getBoolean(gamepad1, ControlMappings.LOWER_ARM);
         waitForStart();
         while (opModeIsActive()) {
-            driveForward(Forward, 0);
-            driveBackward(Backward, 0);
-            driveLeft(Left, 0);
-            driveRight(Right, 0);
-
-            if (Extend) {
+            driveForward(ControlMappings.FORWARD.getFloat(gamepad1), 0);
+            driveBackward(ControlMappings.BACKWARD.getFloat(gamepad1), 0);
+            driveLeft(ControlMappings.LEFT.getFloat(gamepad1), 0);
+            driveRight(ControlMappings.RIGHT.getFloat(gamepad1), 0);
+            if (ControlMappings.EXTEND_ARM.getBoolean(gamepad1)) {
                 extendArm(1.0, 0, armExtender);
-            } else if (Retract) {
-                extendArm(-1.0,0,armExtender);
+            } else if (ControlMappings.RETRACT_ARM.getBoolean(gamepad1)) {
+                extendArm(-1.0,0, armExtender);
             }
-            if (Raise) {
-                raiseArm(1.0, 0, roboticArm);
-            } else if (Lower) {
-                lowerArm(1.0,0,armExtender);
-            }
+            raiseArm(ControlMappings.RAISE_ARM.getFloat(gamepad1), 0, roboticArm);
+            lowerArm(ControlMappings.LOWER_ARM.getFloat(gamepad1),0,armExtender);
         }
     }
 }
