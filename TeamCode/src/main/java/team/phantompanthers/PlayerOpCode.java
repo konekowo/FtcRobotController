@@ -26,6 +26,8 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         motorSystem.addMotor("top_right_motor");
         motorSystem.addMotor("bottom_left_motor");
         motorSystem.addMotor("bottom_right_motor");
+        motorSystem.addMotor("arm_extender");
+        motorSystem.addMotor("robotic_arm");
 
         float Forward = Controls.getFloat(gamepad1, ControlMappings.FORWARD);
         float Backward = Controls.getFloat(gamepad1, ControlMappings.BACKWARD);
@@ -44,15 +46,13 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
 
             if (Extend) {
                 extendArm(1.0, 0, armExtender);
-            }
-            if (Retract) {
-                extendArm(-1.0, 0, armExtender);
+            } else if (Retract) {
+                extendArm(-1.0,0,armExtender);
             }
             if (Raise) {
                 raiseArm(1.0, 0, roboticArm);
-            }
-            if (Lower) {
-                lowerArm(1.0, 0, roboticArm);
+            } else if (Lower) {
+                lowerArm(1.0,0,armExtender);
             }
         }
     }
