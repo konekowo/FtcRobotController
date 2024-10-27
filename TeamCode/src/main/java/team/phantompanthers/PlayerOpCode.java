@@ -14,7 +14,6 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         super(gamepad);
         runOpMode();
     }
-    MotorSystem motorSystem = new MotorSystem(hardwareMap);
 
     /**
      * What Will Run During Op Mode
