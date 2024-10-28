@@ -35,6 +35,8 @@ public class AutoOpCode extends ExtendableArmsAutoOpCode {
             driveForward(1.0, 3);
             driveLeft(1.0, 3);
             stopMotion();
+            driveRight(1.0, 3);
+            driveBackward(1.0, 3);
         }
     }
 }
