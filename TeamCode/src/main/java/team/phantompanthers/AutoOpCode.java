@@ -32,7 +32,9 @@ public class AutoOpCode extends ExtendableArmsAutoOpCode {
         // Will Run when Init Is Pressed
         waitForStart();
         while (opModeIsActive()) {
-            // TODO: Add Auto Code //
+            driveForward(1.0, 3);
+            driveLeft(1.0, 3);
+            stopMotion();
         }
     }
 }
