@@ -33,8 +33,8 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
             driveBackward(ControlMappings.BACKWARD.getFloat(gamepad1), 0);
             driveLeft(ControlMappings.LEFT.getFloat(gamepad1), 0);
             driveRight(ControlMappings.RIGHT.getFloat(gamepad1), 0);
-            raiseArm(ControlMappings.RAISE_ARM.getFloat(gamepad1), 0, roboticArm);
-            lowerArm(ControlMappings.LOWER_ARM.getFloat(gamepad1),0,roboticArm);
+            raiseArm(ControlMappings.RAISE_ARM.getFloat(gamepad1), 0, roboticArm,roboticArm2);
+            lowerArm(ControlMappings.LOWER_ARM.getFloat(gamepad1),0,roboticArm,roboticArm2);
         }
     }
 }

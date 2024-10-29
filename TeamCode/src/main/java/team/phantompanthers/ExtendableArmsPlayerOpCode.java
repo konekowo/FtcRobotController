@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 @TeleOp(name = "ExtendableArmsPlayerOpCode", group = "Linear Opmode")
 public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmMovement {
     DcMotor roboticArm;
-    DcMotor armExtender;
+    DcMotor roboticArm2;
 
     /**
      * When The Class in Initialize This Constructor will run the OpMode.
@@ -30,20 +30,23 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
      */
 
     @Override
-    public void raiseArm(double power, long time, @NotNull DcMotor arm) {
+    public void raiseArm(double power, long time, @NotNull DcMotor arm, @NotNull DcMotor arm2) {
         arm.setPower(power);
+        arm2.setPower(power);
         sleep(time);
     }
 
     @Override
-    public void lowerArm(double power, long time, @NotNull DcMotor arm) {
+    public void lowerArm(double power, long time, @NotNull DcMotor arm, @NotNull DcMotor arm2) {
         arm.setPower(power);
+        arm2.setPower(power);
         sleep(time);
     }
 
     @Override
-    public void extendArm(double power, long time, @NotNull DcMotor arm) {
+    public void extendArm(double power, long time, @NotNull DcMotor arm, @NotNull DcMotor arm2) {
         arm.setPower(power);
+        arm2.setPower(power);
         sleep(time);
     }
 
