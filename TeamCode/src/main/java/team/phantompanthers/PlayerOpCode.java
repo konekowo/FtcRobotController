@@ -20,6 +20,7 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
      */
     @Override
     public void runOpMode() {
+        // Maps Motors to their Name
         motorSystem.addMotor("top_left_motor");
         motorSystem.addMotor("top_right_motor");
         motorSystem.addMotor("bottom_left_motor");
@@ -27,6 +28,8 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         motorSystem.addMotor("arm_extender");
         motorSystem.addMotor("robotic_arm");
 
+
+        // Will Run when Init Is Pressed
         waitForStart();
         while (opModeIsActive()) {
             driveForward(ControlMappings.FORWARD.getFloat(gamepad1), 0);
