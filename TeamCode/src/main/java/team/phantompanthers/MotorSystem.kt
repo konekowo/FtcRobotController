@@ -19,8 +19,9 @@ class MotorSystem(private val hardwareMap: HardwareMap){
     }
 
     /**
-     * returns the motor name
+     *  Get Motor Name
      * @param motorName Name of the Motor
+     * @return name of the motor
      */
 
     fun getMotor(motorName: String): DcMotor?{

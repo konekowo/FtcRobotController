@@ -55,7 +55,7 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      * @param arm   -> arm of the robot
      */
     @Override
-    public void raiseArm(double power, long time, @NotNull DcMotor arm) {
+    public void raiseArm(double power, long time, @NotNull DcMotor arm, @NotNull DcMotor arm2) {
         arm.setPower(power);
         sleep(time);
     }
@@ -69,8 +69,9 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      * @param arm   -> Arm of the Robot
      */
     @Override
-    public void lowerArm(double power, long time, @NotNull DcMotor arm) {
+    public void lowerArm(double power, long time, @NotNull DcMotor arm, @NotNull DcMotor arm2) {
         arm.setPower(-power);
+        arm2.setPower(-power);
         sleep(time);
     }
 
@@ -82,8 +83,9 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      * @param arm   -> Arm of the Robot
      */
     @Override
-    public void extendArm(double power, long time, @NotNull DcMotor arm) {
+    public void extendArm(double power, long time, @NotNull DcMotor arm, @NotNull DcMotor arm2) {
         arm.setPower(power);
+        arm2.setPower(power);
         sleep(time);
     }
 
