@@ -32,14 +32,17 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         // Will Run when Init Is Pressed
         waitForStart();
         while (opModeIsActive()) {
-            // This is a masterpiece trust
-            telemetry.addData("Hawk Tuah", "Spit on that thang!");
+            if(opModeIsActive()) {
+                telemetry.addData("Robot status: ", "...Activated");
+            } else {
+                telemetry.addData("Robot status: ", "...Deactivated");
+            }
             driveForward(ControlMappings.FORWARD.getFloat(gamepad1), 0);
             driveBackward(ControlMappings.BACKWARD.getFloat(gamepad1), 0);
             driveLeft(ControlMappings.LEFT.getFloat(gamepad1), 0);
             driveRight(ControlMappings.RIGHT.getFloat(gamepad1), 0);
-            raiseArm(ControlMappings.RAISE_ARM.getFloat(gamepad1), 0, roboticArm,roboticArm2);
-            lowerArm(ControlMappings.LOWER_ARM.getFloat(gamepad1),0,roboticArm,roboticArm2);
+            raiseArm(ControlMappings.RAISE_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
+            lowerArm(ControlMappings.LOWER_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
         }
     }
 }
