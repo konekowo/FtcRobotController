@@ -32,6 +32,8 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         // Will Run when Init Is Pressed
         waitForStart();
         while (opModeIsActive()) {
+            // This is a masterpiece trust
+            telemetry.addData("Hawk Tuah", "Spit on that thang!");
             driveForward(ControlMappings.FORWARD.getFloat(gamepad1), 0);
             driveBackward(ControlMappings.BACKWARD.getFloat(gamepad1), 0);
             driveLeft(ControlMappings.LEFT.getFloat(gamepad1), 0);
