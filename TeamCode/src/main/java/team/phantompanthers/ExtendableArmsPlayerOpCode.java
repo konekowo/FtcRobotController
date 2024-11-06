@@ -52,7 +52,6 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
 
     @Override
     public void driveForward(double power, long time) {
-        telemetry.addData("Forward Motor Turn", power);
         motorSystem.setPower("top_left_motor", power);
         motorSystem.setPower("top_right_motor", power);
         motorSystem.setPower("bottom_left_motor", power);
@@ -62,7 +61,6 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
 
     @Override
     public void driveBackward(double power, long time) {
-        telemetry.addData("Backward Motor Turn", power);
         motorSystem.setPower("top_left_motor", -power);
         motorSystem.setPower("top_right_motor", -power);
         motorSystem.setPower("bottom_left_motor", -power);
@@ -72,7 +70,6 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
 
     @Override
     public void stopMotion(){
-        telemetry.addData("Stop Motion", "...Activated");
         motorSystem.setPower("top_left_motor", 0);
         motorSystem.setPower("top_right_motor", 0);
         motorSystem.setPower("bottom_left_motor", 0);
@@ -81,7 +78,6 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
 
     @Override
     public void driveLeft(double power, long time) {
-        telemetry.addData("Left Motor Turn", power);
         motorSystem.setPower("top_left_motor", power);
         motorSystem.setPower("bottom_right_motor", power);
         sleep(time);
@@ -89,7 +85,6 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
 
     @Override
     public void driveRight(double power, long time) {
-        telemetry.addData("Right Motor Turn", power);
         motorSystem.setPower("top_right_motor", power);
         motorSystem.setPower("bottom_left_motor", power);
         sleep(time);

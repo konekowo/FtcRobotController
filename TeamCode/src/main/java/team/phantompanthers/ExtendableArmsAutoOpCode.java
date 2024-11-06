@@ -96,7 +96,6 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      */
     @Override
     public void driveLeft(double power, long time) {
-        telemetry.addData("Left Motor Turn", power);
         motorSystem.setPower("top_left_motor", power);
         motorSystem.setPower("bottom_right_motor", power);
         sleep(time);
@@ -110,7 +109,6 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
      */
     @Override
     public void driveRight(double power, long time) {
-        telemetry.addData("Right Motor Turn", power);
         motorSystem.setPower("top_right_motor", power);
         motorSystem.setPower("bottom_left_motor", power);
         sleep(time);
