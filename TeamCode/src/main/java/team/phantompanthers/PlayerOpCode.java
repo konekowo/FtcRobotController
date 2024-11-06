@@ -23,8 +23,8 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         motorSystem.addMotor("top_right_motor");
         motorSystem.addMotor("bottom_left_motor");
         motorSystem.addMotor("bottom_right_motor");
-        motorSystem.addMotor("arm_extender");
-        motorSystem.addMotor("robotic_arm");
+        //motorSystem.addMotor("arm_extender");
+        //motorSystem.addMotor("robotic_arm");
 
         telemetry.addData("Status","Initialized");
         telemetry.update();
@@ -36,8 +36,8 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
             driveBackward(ControlMappings.BACKWARD.getFloat(gamepad1), 0);
             driveLeft(ControlMappings.LEFT.getFloat(gamepad1), 0);
             driveRight(ControlMappings.RIGHT.getFloat(gamepad1), 0);
-            raiseArm(ControlMappings.RAISE_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
-            lowerArm(ControlMappings.LOWER_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
+            //raiseArm(ControlMappings.RAISE_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
+            //lowerArm(ControlMappings.LOWER_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
         }
     }
 }
