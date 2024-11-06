@@ -16,6 +16,8 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
      */
     @Override
     public void runOpMode() {
+        initMotorSystem();
+
         // Maps Motors to their Name
         motorSystem.addMotor("top_left_motor");
         motorSystem.addMotor("top_right_motor");
@@ -30,11 +32,6 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         waitForStart();
         resetRuntime();
         while (opModeIsActive()) {
-            if(opModeIsActive()) {
-                telemetry.addData("Robot status: ", "...Activated");
-            } else {
-                telemetry.addData("Robot status: ", "...Deactivated");
-            }
             driveForward(ControlMappings.FORWARD.getFloat(gamepad1), 0);
             driveBackward(ControlMappings.BACKWARD.getFloat(gamepad1), 0);
             driveLeft(ControlMappings.LEFT.getFloat(gamepad1), 0);
