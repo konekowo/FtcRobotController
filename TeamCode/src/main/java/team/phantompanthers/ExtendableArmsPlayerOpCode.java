@@ -21,9 +21,6 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
      *
      * @param gamepad -> Gamepad of the Robot
      */
-    public ExtendableArmsPlayerOpCode(Gamepad gamepad) {
-        super(gamepad);
-    }
 
     /**
      * What Will Run During Op Mode

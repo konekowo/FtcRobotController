@@ -10,10 +10,6 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
      *
      * @param gamepad -> Gamepad of the Robot
      */
-    public PlayerOpCode(Gamepad gamepad) {
-        super(gamepad);
-        runOpMode();
-    }
 
     /**
      * What Will Run During Op Mode

@@ -16,8 +16,6 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 public abstract class PlayerTestOpCode extends LinearOpMode implements Movement {
     protected MotorSystem motorSystem = new MotorSystem(hardwareMap);
 
-    public PlayerTestOpCode(Gamepad gamepad) {
-    }
 
     @Override
     public void runOpMode() throws InterruptedException {
