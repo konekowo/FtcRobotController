@@ -3,7 +3,7 @@ package team.phantompanthers;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-@TeleOp(name = "PlayerOpCode", group = "Linear Opmode")
+@TeleOp(name = "IntoTheDeep", group = "Linear Opmode")
 public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
     /**
      * When The Class in Initialize This Constructor will run the OpMode.
