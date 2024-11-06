@@ -28,9 +28,11 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         motorSystem.addMotor("arm_extender");
         motorSystem.addMotor("robotic_arm");
 
-
+        telemetry.addData("Status","Initialized");
+        telemetry.update();
         // Will Run when Init Is Pressed
         waitForStart();
+        resetRuntime();
         while (opModeIsActive()) {
             if(opModeIsActive()) {
                 telemetry.addData("Robot status: ", "...Activated");
