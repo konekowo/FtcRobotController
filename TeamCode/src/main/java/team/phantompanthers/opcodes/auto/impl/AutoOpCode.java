@@ -1,10 +1,10 @@
-package team.phantompanthers.opcodes.impl.auto;
+package team.phantompanthers.opcodes.auto.impl;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import team.phantompanthers.opcodes.AutoOpCodeBase;
 import team.phantompanthers.RobotActions;
+import team.phantompanthers.opcodes.auto.AutoOpCodeBase;
 
 /**
  * <h1>AutoOpCode Documentation</h1>

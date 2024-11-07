@@ -1,9 +1,9 @@
-package team.phantompanthers.opcodes.impl.player;
+package team.phantompanthers.opcodes.player.impl;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import team.phantompanthers.ControlMappings;
-import team.phantompanthers.opcodes.PlayerOpCodeBase;
+import team.phantompanthers.opcodes.player.PlayerOpCodeBase;
 import team.phantompanthers.RobotActions;
 
 @TeleOp(name = "IntoTheDeep", group = "Linear Opmode")

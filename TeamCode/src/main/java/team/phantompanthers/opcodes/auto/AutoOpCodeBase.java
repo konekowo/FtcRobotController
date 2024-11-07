@@ -1,8 +1,9 @@
-package team.phantompanthers.opcodes;
+package team.phantompanthers.opcodes.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import team.phantompanthers.RobotActions;
+import team.phantompanthers.opcodes.OpCodeBase;
 
 /**
  * <h1>AutoTestOpCode Documentation</h1>
