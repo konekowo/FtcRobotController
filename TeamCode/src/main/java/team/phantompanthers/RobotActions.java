@@ -4,11 +4,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.jetbrains.annotations.NotNull;
 
-/**
- * <h1>ExtendableArmsPlayerOpCode Documentation</h1>
- * ExtendableArmsPlayerCode is for the Robot Is In TeleOp Mode and Extends it's Arm.
- * It Extends PlayerOpCode and adds Manual Controls.
- */
 public class RobotActions {
     public static void raiseArm(double power, long time, @NotNull DcMotor arm, @NotNull DcMotor arm2) {
         arm.setPower(power);

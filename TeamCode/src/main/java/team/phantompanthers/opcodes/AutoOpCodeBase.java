@@ -1,7 +1,8 @@
-package team.phantompanthers;
+package team.phantompanthers.opcodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+import team.phantompanthers.RobotActions;
 
 /**
  * <h1>AutoTestOpCode Documentation</h1>
@@ -9,24 +10,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * this class extends LinearOpMode and implements Movement for more functionality.
  */
 @Autonomous
-public abstract class AutoTestOpCode extends LinearOpMode {
-    protected MotorSystem motorSystem;
-
-    /**
-     * Initiates the motor system for use.
-     * Please call this method in runOpMode()!!
-     */
-    protected void initMotorSystem() {
-        motorSystem = new MotorSystem(hardwareMap, telemetry);
-    }
-
+public abstract class AutoOpCodeBase extends OpCodeBase {
     public void runOpMode() {
         initMotorSystem();
-        motorSystem.addMotor("top_left_motor");
-        motorSystem.addMotor("top_right_motor");
-        motorSystem.addMotor("bottom_left_motor");
-        motorSystem.addMotor("bottom_right_motor");
-
         // Will Run when Init Is Pressed
         waitForStart();
         if (opModeIsActive()) {

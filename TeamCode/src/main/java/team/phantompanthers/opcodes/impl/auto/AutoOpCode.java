@@ -1,23 +1,21 @@
-package team.phantompanthers;
+package team.phantompanthers.opcodes.impl.auto;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+import team.phantompanthers.opcodes.AutoOpCodeBase;
+import team.phantompanthers.RobotActions;
 
 /**
  * <h1>AutoOpCode Documentation</h1>
  * The Actual TeleOp Code for the FTC Into the deep for the Phantom Panthers,
  */
 @Autonomous(name = "AutoOpCode", group = "Linear Opmode")
-public class AutoOpCode extends AutoTestOpCode{
+public class AutoOpCode extends AutoOpCodeBase {
 
     @Override
     public void runOpMode() {
         initMotorSystem();
-        motorSystem.addMotor("top_left_motor");
-        motorSystem.addMotor("top_right_motor");
-        motorSystem.addMotor("bottom_left_motor");
-        motorSystem.addMotor("bottom_right_motor");
-
         // Will Run when Init Is Pressed
         waitForStart();
         while (opModeIsActive()) {

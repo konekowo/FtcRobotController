@@ -1,23 +1,19 @@
-package team.phantompanthers;
+package team.phantompanthers.opcodes.impl.player;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import team.phantompanthers.ControlMappings;
+import team.phantompanthers.opcodes.PlayerOpCodeBase;
+import team.phantompanthers.RobotActions;
+
 @TeleOp(name = "IntoTheDeep", group = "Linear Opmode")
-public class PlayerOpCode extends PlayerTestOpCode {
+public class PlayerOpCode extends PlayerOpCodeBase {
     /**
      * What Will Run During Op Mode
      */
     @Override
     public void runOpMode() {
         initMotorSystem();
-
-        // Maps Motors to their Name
-        motorSystem.addMotor("top_left_motor");
-        motorSystem.addMotor("top_right_motor");
-        motorSystem.addMotor("bottom_left_motor");
-        motorSystem.addMotor("bottom_right_motor");
-        //motorSystem.addMotor("arm_extender");
-        //motorSystem.addMotor("robotic_arm");
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
