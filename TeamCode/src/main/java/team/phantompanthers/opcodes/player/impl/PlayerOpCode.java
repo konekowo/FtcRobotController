@@ -21,10 +21,10 @@ public class PlayerOpCode extends PlayerOpCodeBase {
         waitForStart();
         resetRuntime();
         while (opModeIsActive()) {
-            RobotActions.driveForward(motorSystem, ControlMappings.FORWARD.get(Float.class, gamepad1), 0);
-            RobotActions.driveBackward(motorSystem, ControlMappings.BACKWARD.get(Float.class, gamepad1), 0);
-            RobotActions.driveLeft(motorSystem, ControlMappings.LEFT.get(Float.class, gamepad1), 0);
-            RobotActions.driveRight(motorSystem, ControlMappings.RIGHT.get(Float.class, gamepad1), 0);
+            RobotActions.driveForward(motorSystem, ControlMappings.FORWARD.getFloat(gamepad1), 0);
+            RobotActions.driveBackward(motorSystem, ControlMappings.BACKWARD.getFloat(gamepad1), 0);
+            RobotActions.driveLeft(motorSystem, ControlMappings.LEFT.getFloat(gamepad1), 0);
+            RobotActions.driveRight(motorSystem, ControlMappings.RIGHT.getFloat(gamepad1), 0);
             //RobotActions.raiseArm(motorSystem, ControlMappings.RAISE_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
             //RobotActions.lowerArm(motorSystem, ControlMappings.LOWER_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
         }

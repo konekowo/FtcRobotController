@@ -5,12 +5,12 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 public enum ControlMappings {
     FORWARD("right_trigger"),
     BACKWARD("left_trigger"),
-    LEFT("left_stick_x", value -> Math.min(-((float) value), 0f)),
+    LEFT("left_stick_x", value -> Math.max(-((float) value), 0f)),
     RIGHT("left_stick_x", value -> Math.max((float) value, 0f)),
     EXTEND_ARM("right_bumper"),
     RETRACT_ARM("left_bumper"),
     RAISE_ARM("right_stick_y", value -> Math.max((float) value, 0f)),
-    LOWER_ARM("right_stick_y", value -> Math.min(-((float) value), 0f));
+    LOWER_ARM("right_stick_y", value -> Math.max(-((float) value), 0f));
 
     public final String fieldName;
     private final ICallback valueModifier;
@@ -37,24 +37,35 @@ public enum ControlMappings {
     }
 
     /**
-     * Get the value of a control.
+     * Get the float value of a control.
      *
-     * @param <T>     The expected return type.
-     * @param type    The expected return type.
      * @param gamepad The GamePad object.
-     * @return The value of the control.
+     * @return The float value of the control.
      */
-    public <T> T get(Class<T> type, Gamepad gamepad) {
-        T value;
+    public float getFloat(Gamepad gamepad) {
+        float value;
         try {
-            if (gamepad.getClass().getField(this.fieldName).getType() == type) {
-                value = type.cast(gamepad.getClass().getField(this.fieldName).get(gamepad));
-                if (this.valueModifier != null) value = type.cast(this.valueModifier.call(value));
-            } else {
-                throw new IllegalArgumentException();
-            }
-        } catch (NoSuchFieldException | IllegalAccessException | IllegalArgumentException | ClassCastException e) {
-            throw new RuntimeException("The field '" + this.fieldName + "' is not a '" + type.getName() + "' or does not exit on the " + Gamepad.class.getName() + " class.");
+            value = gamepad.getClass().getField(this.fieldName).getFloat(gamepad);
+            if (this.valueModifier != null) value = (float) this.valueModifier.call(value);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException("The field '" + this.fieldName + "' is not a float or does not exit on the " + Gamepad.class.getName() + " class.");
+        }
+        return value;
+    }
+
+    /**
+     * Get the boolean value of a control.
+     *
+     * @param gamepad The GamePad object.
+     * @return The boolean value of the control.
+     */
+    public boolean getBoolean(Gamepad gamepad) {
+        boolean value;
+        try {
+            value = gamepad.getClass().getField(this.fieldName).getBoolean(gamepad);
+            if (this.valueModifier != null) value = (boolean) this.valueModifier.call(value);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException("The field '" + this.fieldName + "' is not a float or does not exit on the " + Gamepad.class.getName() + " class.");
         }
         return value;
     }
