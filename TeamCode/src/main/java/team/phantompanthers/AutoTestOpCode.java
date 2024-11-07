@@ -31,12 +31,8 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
         waitForStart();
         if (opModeIsActive()) {
             driveForward(1.0, 2000);
-
-            stopMotion();
             sleep(1000);
-
             driveBackward(1.0, 2000);
-            stopMotion();
         }
     }
 
@@ -56,6 +52,7 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
         motorSystem.setPower("bottom_right_motor", power);
         // Stops moving after time
         sleep(time);
+        stopMotion();
     }
 
     /**
@@ -71,6 +68,7 @@ public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
         motorSystem.setPower("bottom_right_motor", -power);
         // Stops moving after time
         sleep(time);
+        stopMotion();
     }
 
 
