@@ -16,24 +16,12 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
     DcMotor armExtender;
 
     /**
-     * When The Class in Initialize This Constructor will run the OpMode.
-     *
-     * @param leftMotor  -> Left Motor of the Robot
-     * @param rightMotor -> Right Motor of the Robot
-     * @param roboticArm -> Arm of the Robot
-     */
-    public ExtendableArmsAutoOpCode(DcMotor leftMotor, DcMotor rightMotor, DcMotor roboticArm) throws InterruptedException {
-        super(leftMotor, rightMotor);
-        runOpMode();
-    }
-
-
-    /**
      * FTC Robot Controller
      * Happens During Init Is Pressed
      */
     @Override
     public void runOpMode() {
+        initMotorSystem();
         motorSystem.addMotor("top_left_motor");
         motorSystem.addMotor("top_right_motor");
         motorSystem.addMotor("bottom_left_motor");

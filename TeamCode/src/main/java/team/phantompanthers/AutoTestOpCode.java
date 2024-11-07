@@ -4,7 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * <h1>AutoTestOpCode Documentation</h1>
@@ -13,14 +15,18 @@ import java.util.HashMap;
  */
 @Autonomous
 public abstract class AutoTestOpCode extends LinearOpMode implements Movement {
+    protected MotorSystem motorSystem;
 
-     protected MotorSystem motorSystem = new MotorSystem(hardwareMap);
-    // Constructor for Class
-    public AutoTestOpCode(DcMotor leftMotor, DcMotor rightMotor) {
-        runOpMode();
+    /**
+     * Initiates the motor system for use.
+     * Please call this method in runOpMode()!!
+     */
+    protected void initMotorSystem() {
+        motorSystem = new MotorSystem(hardwareMap, telemetry);
     }
 
     public void runOpMode() {
+        initMotorSystem();
         motorSystem.addMotor("top_left_motor");
         motorSystem.addMotor("top_right_motor");
         motorSystem.addMotor("bottom_left_motor");

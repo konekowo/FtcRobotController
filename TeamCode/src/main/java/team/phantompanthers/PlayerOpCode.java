@@ -6,12 +6,6 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 @TeleOp(name = "IntoTheDeep", group = "Linear Opmode")
 public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
     /**
-     * When The Class in Initialize This Constructor will run the OpMode.
-     *
-     * @param gamepad -> Gamepad of the Robot
-     */
-
-    /**
      * What Will Run During Op Mode
      */
     @Override

@@ -11,19 +11,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  */
 @Autonomous(name = "AutoOpCode", group = "Linear Opmode")
 public class AutoOpCode extends ExtendableArmsAutoOpCode {
-    /**
-     * When The Class in Initialize This Constructor will run the OpMode.
-     *
-     * @param leftMotor  -> Left Motor of the Robot
-     * @param rightMotor -> Right Motor of the Robot
-     * @param roboticArm -> Arm of the Robot
-     */
-    public AutoOpCode(DcMotor leftMotor, DcMotor rightMotor, DcMotor roboticArm) throws InterruptedException {
-        super(leftMotor, rightMotor, roboticArm);
-    }
 
     @Override
     public void runOpMode() {
+        initMotorSystem();
         motorSystem.addMotor("top_left_motor");
         motorSystem.addMotor("top_right_motor");
         motorSystem.addMotor("bottom_left_motor");

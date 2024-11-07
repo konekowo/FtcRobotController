@@ -5,6 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * <h1>PlayerTestOpCode Documentation</h1>
  * A TeleOp OpMode for controlling a robot during the Driver Controlled period.
@@ -21,7 +24,7 @@ public abstract class PlayerTestOpCode extends LinearOpMode implements Movement 
      * Please call this method in runOpMode()!!
      */
     protected void initMotorSystem() {
-        motorSystem = new MotorSystem(hardwareMap);
+        motorSystem = new MotorSystem(hardwareMap, telemetry);
     }
 
 

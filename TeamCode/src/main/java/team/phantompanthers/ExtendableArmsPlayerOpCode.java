@@ -30,21 +30,27 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
     public void raiseArm(double power, long time, @NotNull DcMotor arm, @NotNull DcMotor arm2) {
         arm.setPower(power);
         arm2.setPower(power);
-        sleep(time);
+        if (time > 0) {
+            sleep(time);
+        }
     }
 
     @Override
     public void lowerArm(double power, long time, @NotNull DcMotor arm, @NotNull DcMotor arm2) {
         arm.setPower(power);
         arm2.setPower(power);
-        sleep(time);
+        if (time > 0) {
+            sleep(time);
+        }
     }
 
     @Override
     public void extendArm(double power, long time, @NotNull DcMotor arm, @NotNull DcMotor arm2) {
         arm.setPower(power);
         arm2.setPower(power);
-        sleep(time);
+        if (time > 0) {
+            sleep(time);
+        }
     }
 
     @Override
@@ -53,7 +59,9 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
         motorSystem.setPower("top_right_motor", power);
         motorSystem.setPower("bottom_left_motor", power);
         motorSystem.setPower("bottom_right_motor", power);
-        sleep(time);
+        if (time > 0) {
+            sleep(time);
+        }
     }
 
     @Override
@@ -62,7 +70,9 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
         motorSystem.setPower("top_right_motor", -power);
         motorSystem.setPower("bottom_left_motor", -power);
         motorSystem.setPower("bottom_right_motor", -power);
-        sleep(time);
+        if (time > 0) {
+            sleep(time);
+        }
     }
 
     @Override
@@ -77,13 +87,19 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
     public void driveLeft(double power, long time) {
         motorSystem.setPower("top_left_motor", power);
         motorSystem.setPower("bottom_right_motor", power);
-        sleep(time);
+        if (time > 0) {
+            sleep(time);
+        }
     }
 
     @Override
     public void driveRight(double power, long time) {
         motorSystem.setPower("top_right_motor", power);
         motorSystem.setPower("bottom_left_motor", power);
-        sleep(time);
+        if (time > 0) {
+            sleep(time);
+        }
     }
+    
+    
 }
