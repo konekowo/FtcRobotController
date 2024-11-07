@@ -7,7 +7,8 @@ public enum ControlMappings {
     BACKWARD("left_trigger"),
     LEFT("left_stick_x", value -> Math.min(-((float) value), 0f)),
     RIGHT("left_stick_x", value -> Math.max((float) value, 0f)),
-    EXTEND_ARM("right_bumper"), RETRACT_ARM("left_bumper"),
+    EXTEND_ARM("right_bumper"),
+    RETRACT_ARM("left_bumper"),
     RAISE_ARM("right_stick_y", value -> Math.max((float) value, 0f)),
     LOWER_ARM("right_stick_y", value -> Math.min(-((float) value), 0f));
 
