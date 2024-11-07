@@ -1,7 +1,6 @@
 package team.phantompanthers;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.Gamepad;
 
 @TeleOp(name = "IntoTheDeep", group = "Linear Opmode")
 public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
@@ -20,7 +19,7 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         //motorSystem.addMotor("arm_extender");
         //motorSystem.addMotor("robotic_arm");
 
-        telemetry.addData("Status","Initialized");
+        telemetry.addData("Status", "Initialized");
         telemetry.update();
         // Will Run when Init Is Pressed
         waitForStart();

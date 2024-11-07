@@ -7,8 +7,7 @@ public enum ControlMappings {
     BACKWARD("left_trigger"),
     LEFT("left_stick_x", value -> Math.min(-((float) value), 0f)),
     RIGHT("left_stick_x", value -> Math.max((float) value, 0f)),
-    EXTEND_ARM("right_bumper"),
-    RETRACT_ARM("left_bumper"),
+    EXTEND_ARM("right_bumper"), RETRACT_ARM("left_bumper"),
     RAISE_ARM("right_stick_y", value -> Math.max((float) value, 0f)),
     LOWER_ARM("right_stick_y", value -> Math.min(-((float) value), 0f));
 
@@ -17,6 +16,7 @@ public enum ControlMappings {
 
     /**
      * Constructor of ControlMappings
+     *
      * @param fieldName The fieldname of the Gamepad control to get.
      */
 
@@ -26,7 +26,8 @@ public enum ControlMappings {
 
     /**
      * Constructor of ControlMappings
-     * @param fieldName The fieldname of the Gamepad control to get.
+     *
+     * @param fieldName     The fieldname of the Gamepad control to get.
      * @param valueModifier A callback function that modifies the value returned.
      */
     ControlMappings(String fieldName, ICallback valueModifier) {
@@ -36,6 +37,7 @@ public enum ControlMappings {
 
     /**
      * Get the float value of a control.
+     *
      * @param gamepad The GamePad object.
      * @return The float value of the control.
      */
@@ -52,6 +54,7 @@ public enum ControlMappings {
 
     /**
      * Get the boolean value of a control.
+     *
      * @param gamepad The GamePad object.
      * @return The boolean value of the control.
      */

@@ -79,8 +79,9 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
 
     /**
      * FTC Robot Controller
+     *
      * @param power -> power of the robot movement
-     * @param time -> Duration of the movement
+     * @param time  -> Duration of the movement
      */
     @Override
     public void driveLeft(double power, long time) {
@@ -92,8 +93,9 @@ public class ExtendableArmsAutoOpCode extends AutoTestOpCode implements ArmMovem
 
     /**
      * FTC Robot Controller
+     *
      * @param power -> power of the robot movement
-     * @param time -> Duration of the movement
+     * @param time  -> Duration of the movement
      */
     @Override
     public void driveRight(double power, long time) {

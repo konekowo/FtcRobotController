@@ -2,7 +2,6 @@ package team.phantompanthers;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -76,7 +75,7 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
     }
 
     @Override
-    public void stopMotion(){
+    public void stopMotion() {
         motorSystem.setPower("top_left_motor", 0);
         motorSystem.setPower("top_right_motor", 0);
         motorSystem.setPower("bottom_left_motor", 0);
@@ -100,6 +99,6 @@ public class ExtendableArmsPlayerOpCode extends PlayerTestOpCode implements ArmM
             sleep(time);
         }
     }
-    
-    
+
+
 }

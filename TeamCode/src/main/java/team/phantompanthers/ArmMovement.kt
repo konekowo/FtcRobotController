@@ -14,7 +14,7 @@ interface ArmMovement : Movement {
      * @param arm is the motor of the robot arm.
      * @param arm2 is the motor of the robot arm.
      */
-    fun raiseArm(power: Double, time: Long, arm: DcMotor,arm2: DcMotor)
+    fun raiseArm(power: Double, time: Long, arm: DcMotor, arm2: DcMotor)
 
     /**
      * @param power is the speed of the robot arm lowering
@@ -22,7 +22,7 @@ interface ArmMovement : Movement {
      * @param arm is the motor of the robot arm.
      * @param arm2 is the motor of the robot arm.
      */
-    fun lowerArm(power: Double, time: Long, arm: DcMotor,arm2: DcMotor)
+    fun lowerArm(power: Double, time: Long, arm: DcMotor, arm2: DcMotor)
 
     /**
      * @param power is the speed of the robot arm extending
@@ -30,5 +30,5 @@ interface ArmMovement : Movement {
      * @param arm is the motor of the robot arm.
      * @param arm2 is the motor of the robot arm.
      */
-    fun extendArm(power: Double, time: Long, arm: DcMotor,arm2: DcMotor)
+    fun extendArm(power: Double, time: Long, arm: DcMotor, arm2: DcMotor)
 }
