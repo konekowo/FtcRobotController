@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
  * The Actual TeleOp Code for the FTC Into the deep for the Phantom Panthers,
  */
 @Autonomous(name = "AutoOpCode", group = "Linear Opmode")
-public class AutoOpCode extends ExtendableArmsAutoOpCode {
+public class AutoOpCode extends AutoTestOpCode{
 
     @Override
     public void runOpMode() {
@@ -21,10 +21,10 @@ public class AutoOpCode extends ExtendableArmsAutoOpCode {
         // Will Run when Init Is Pressed
         waitForStart();
         while (opModeIsActive()) {
-            driveForward(1.0, 3);
-            driveLeft(1.0, 3);
-            driveRight(1.0, 3);
-            driveBackward(1.0, 3);
+            RobotActions.driveForward(motorSystem, 1.0, 3);
+            RobotActions.driveLeft(motorSystem, 1.0, 3);
+            RobotActions.driveRight(motorSystem, 1.0, 3);
+            RobotActions.driveBackward(motorSystem, 1.0, 3);
         }
     }
 }

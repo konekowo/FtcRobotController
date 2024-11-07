@@ -10,8 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  * <p>
  * It provides basic telemetry feedback and responds to gamepad joystick input.
  */
-@TeleOp()
-public abstract class PlayerTestOpCode extends LinearOpMode implements Movement {
+public abstract class PlayerTestOpCode extends LinearOpMode {
     protected MotorSystem motorSystem;
 
     /**
@@ -24,7 +23,7 @@ public abstract class PlayerTestOpCode extends LinearOpMode implements Movement 
 
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
 
     }
 }

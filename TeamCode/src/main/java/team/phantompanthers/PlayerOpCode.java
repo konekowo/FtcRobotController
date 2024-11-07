@@ -3,7 +3,7 @@ package team.phantompanthers;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name = "IntoTheDeep", group = "Linear Opmode")
-public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
+public class PlayerOpCode extends PlayerTestOpCode {
     /**
      * What Will Run During Op Mode
      */
@@ -25,12 +25,12 @@ public class PlayerOpCode extends ExtendableArmsPlayerOpCode {
         waitForStart();
         resetRuntime();
         while (opModeIsActive()) {
-            driveForward(ControlMappings.FORWARD.get(Float.class, gamepad1), 0);
-            driveBackward(ControlMappings.BACKWARD.get(Float.class, gamepad1), 0);
-            driveLeft(ControlMappings.LEFT.get(Float.class, gamepad1), 0);
-            driveRight(ControlMappings.RIGHT.get(Float.class, gamepad1), 0);
-            //raiseArm(ControlMappings.RAISE_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
-            //lowerArm(ControlMappings.LOWER_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
+            RobotActions.driveForward(motorSystem, ControlMappings.FORWARD.get(Float.class, gamepad1), 0);
+            RobotActions.driveBackward(motorSystem, ControlMappings.BACKWARD.get(Float.class, gamepad1), 0);
+            RobotActions.driveLeft(motorSystem, ControlMappings.LEFT.get(Float.class, gamepad1), 0);
+            RobotActions.driveRight(motorSystem, ControlMappings.RIGHT.get(Float.class, gamepad1), 0);
+            //RobotActions.raiseArm(motorSystem, ControlMappings.RAISE_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
+            //RobotActions.lowerArm(motorSystem, ControlMappings.LOWER_ARM.getFloat(gamepad1), 0, roboticArm, roboticArm2);
         }
     }
 }
