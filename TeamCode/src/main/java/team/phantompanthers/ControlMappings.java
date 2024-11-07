@@ -13,7 +13,7 @@ public enum ControlMappings {
     LOWER_ARM("right_stick_y", value -> Math.min(-((float) value), 0f));
 
     public final String fieldName;
-    private ICallback valueModifier = null;
+    private final ICallback valueModifier;
 
     /**
      * Constructor of ControlMappings
@@ -37,35 +37,24 @@ public enum ControlMappings {
     }
 
     /**
-     * Get the float value of a control.
+     * Get the value of a control.
      *
+     * @param <T>     The expected return type.
+     * @param type    The expected return type.
      * @param gamepad The GamePad object.
-     * @return The float value of the control.
+     * @return The value of the control.
      */
-    public float getFloat(Gamepad gamepad) {
-        float value;
+    public <T> T get(Class<T> type, Gamepad gamepad) {
+        T value;
         try {
-            value = gamepad.getClass().getField(this.fieldName).getFloat(gamepad);
-            if (this.valueModifier != null) value = (float) this.valueModifier.call(value);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException("The field '" + this.fieldName + "' is not a float or does not exit on the " + Gamepad.class.getName() + " class.");
-        }
-        return value;
-    }
-
-    /**
-     * Get the boolean value of a control.
-     *
-     * @param gamepad The GamePad object.
-     * @return The boolean value of the control.
-     */
-    public boolean getBoolean(Gamepad gamepad) {
-        boolean value;
-        try {
-            value = gamepad.getClass().getField(this.fieldName).getBoolean(gamepad);
-            if (this.valueModifier != null) value = (boolean) this.valueModifier.call(value);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException("The field '" + this.fieldName + "' is not a float or does not exit on the " + Gamepad.class.getName() + " class.");
+            if (gamepad.getClass().getField(this.fieldName).getType() == type) {
+                value = type.cast(gamepad.getClass().getField(this.fieldName).get(gamepad));
+                if (this.valueModifier != null) value = type.cast(this.valueModifier.call(value));
+            } else {
+                throw new IllegalArgumentException();
+            }
+        } catch (NoSuchFieldException | IllegalAccessException | IllegalArgumentException | ClassCastException e) {
+            throw new RuntimeException("The field '" + this.fieldName + "' is not a '" + type.getName() + "' or does not exit on the " + Gamepad.class.getName() + " class.");
         }
         return value;
     }
