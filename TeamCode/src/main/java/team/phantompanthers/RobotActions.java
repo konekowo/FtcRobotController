@@ -75,9 +75,9 @@ public class RobotActions {
         motorSystem.setPower("top_right_motor", power);
         motorSystem.setPower("bottom_left_motor", power);
         motorSystem.setPower("top_left_motor",
-                motorSystem.getPower("top_left_motor") / (1 + power));
+                motorSystem.getPower("top_left_motor") * (1 - power));
         motorSystem.setPower("bottom_right_motor",
-                motorSystem.getPower("bottom_right_motor") / (1 + power));
+                motorSystem.getPower("bottom_right_motor") * (1 - power));
         if (time > 0) {
             sleep(time);
         }
@@ -94,9 +94,9 @@ public class RobotActions {
         motorSystem.setPower("top_left_motor", power);
         motorSystem.setPower("bottom_right_motor", power);
         motorSystem.setPower("top_right_motor",
-                motorSystem.getPower("top_right_motor") / (1 + power));
+                motorSystem.getPower("top_right_motor") * (1 - power));
         motorSystem.setPower("bottom_left_motor",
-                motorSystem.getPower("bottom_left_motor") / (1 + power));
+                motorSystem.getPower("bottom_left_motor") * (1 - power));
         if (time > 0) {
             sleep(time);
         }
