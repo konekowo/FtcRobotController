@@ -2,15 +2,14 @@ package team.phantompanthers;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.jetbrains.annotations.NotNull;
-
 public class RobotActions {
 
     /**
      * Raise or lower the arms of the robot.
+     *
      * @param power The speed at which to raise or lower it at. Negative power lowers it, positive power raises it.
-     * @param time The time to raise for.
-     * @param arm The robotic arm to raise or lower.
+     * @param time  The time to raise for.
+     * @param arm   The robotic arm to raise or lower.
      */
     public static void raiseArm(double power, long time, DcMotor arm) {
         if (arm != null) {
@@ -23,9 +22,10 @@ public class RobotActions {
 
     /**
      * Extend or retract the arm.
+     *
      * @param power The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
-     * @param time The time to extend or retract for.
-     * @param arm The arm to extend or retract.
+     * @param time  The time to extend or retract for.
+     * @param arm   The arm to extend or retract.
      */
     public static void extendArm(double power, long time, DcMotor arm) {
         arm.setPower(power);
@@ -36,10 +36,11 @@ public class RobotActions {
 
     /**
      * Drive the robot in any direction.
+     *
      * @param motorSystem The MotorSystem
-     * @param powerX The x speed
-     * @param powerY The y speed
-     * @param time The time to drive for.
+     * @param powerX      The x speed
+     * @param powerY      The y speed
+     * @param time        The time to drive for.
      */
     public static void drive(MotorSystem motorSystem, double powerX, double powerY, long time) {
         motorSystem.setPower("top_left_motor", powerY);
@@ -53,6 +54,7 @@ public class RobotActions {
 
     /**
      * Stops all motion on all motors.
+     *
      * @param motorSystem The MotorSystem to stop all motors on.
      */
     public static void stopMotion(MotorSystem motorSystem) {
@@ -64,9 +66,10 @@ public class RobotActions {
 
     /**
      * Rotates the robot to the left.
+     *
      * @param motorSystem The MotorSystem
-     * @param power The speed to turn at.
-     * @param time The time to turn for.
+     * @param power       The speed to turn at.
+     * @param time        The time to turn for.
      */
     public static void driveTurnLeft(MotorSystem motorSystem, double power, long time) {
         motorSystem.setPower("top_right_motor", power);
@@ -82,9 +85,10 @@ public class RobotActions {
 
     /**
      * Rotates the robot to the right.
+     *
      * @param motorSystem The MotorSystem
-     * @param power The speed to turn at.
-     * @param time The time to turn for.
+     * @param power       The speed to turn at.
+     * @param time        The time to turn for.
      */
     public static void driveTurnRight(MotorSystem motorSystem, double power, long time) {
         motorSystem.setPower("top_left_motor", power);
@@ -100,6 +104,7 @@ public class RobotActions {
 
     /**
      * Suspends the current thread.
+     *
      * @param milliseconds The time to suspend the thread for.
      */
     private static void sleep(long milliseconds) {
