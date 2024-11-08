@@ -3,14 +3,13 @@ package team.phantompanthers;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 public enum ControlMappings {
-    FORWARD("right_trigger"),
-    BACKWARD("left_trigger"),
-    LEFT("left_stick_x", value -> Math.max(-((float) value), 0f)),
-    RIGHT("left_stick_x", value -> Math.max((float) value, 0f)),
-    EXTEND_ARM("right_bumper"),
-    RETRACT_ARM("left_bumper"),
-    RAISE_ARM("right_stick_y", value -> Math.max((float) value, 0f)),
-    LOWER_ARM("right_stick_y", value -> Math.max(-((float) value), 0f));
+    MOVEMENT_X("left_stick_x"),
+    MOVEMENT_Y("right_stick_y"),
+    TURN_LEFT("right_stick_x", value -> Math.max(-((float) value), 0f)),
+    TURN_RIGHT("right_stick_x", value -> Math.max((float) value, 0f)),
+    EXTEND_ARM("right_trigger"),
+    RETRACT_ARM("left_trigger"),
+    RAISE_ARM("right_stick_y");
 
     public final String fieldName;
     private final ICallback valueModifier;

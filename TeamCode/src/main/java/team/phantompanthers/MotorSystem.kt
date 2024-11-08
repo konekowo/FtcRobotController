@@ -12,6 +12,7 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
     private val motors: MutableMap<String, DcMotor> = HashMap()
     private val warnedMotors: MutableList<String> = ArrayList()
     private val reversedMotors: MutableList<String> = ArrayList()
+    private val speeds: MutableMap<String, Double> = HashMap()
 
     /**
      * Assigns a MotorName to the Motor, and adds it to the HashMap.
@@ -21,6 +22,7 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
         try {
             val motor: DcMotor = hardwareMap.get(DcMotor::class.java, motorName)
             motors[motorName] = motor
+            speeds.clear()
             if (isReversed) {
                 reversedMotors.add(motorName);
             }
@@ -51,9 +53,8 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
         if (reversedMotors.contains(motorName)){
             convertedPower = -power;
         }
-        val motor: DcMotor = getMotor(motorName) ?: return
-        if (motor.power != convertedPower) {
-            motor.power = convertedPower
+        if (getPower(motorName) != convertedPower) {
+            speeds[motorName] = convertedPower
         }
     }
 
@@ -64,10 +65,14 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
      */
     fun getPower(motorName: String): Double {
         val motor: DcMotor = getMotor(motorName) ?: return 0.0
-        if (reversedMotors.contains(motorName)) {
-            return -motor.power;
+        return if (speeds[motorName] == null) {
+            if (reversedMotors.contains(motorName)) {
+                -motor.power;
+            } else {
+                motor.power;
+            }
         } else {
-            return motor.power;
+            speeds[motorName]!!
         }
     }
 
@@ -78,6 +83,21 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
     fun removeMotor(motorName: String) {
         setPower(motorName, 0.0)
         motors.remove(motorName)
+    }
+
+    /**
+     * Updates the motors that were changed with the changed speeds.
+     */
+    fun updateMotors() {
+        for (speed in speeds) {
+            val motorName: String = speed.key;
+            val power: Double = speed.value;
+            val motor: DcMotor = getMotor(motorName) ?: continue
+            if (motor.power != power) {
+                motor.power = power
+            }
+        }
+        speeds.clear()
     }
 
 }

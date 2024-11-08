@@ -17,9 +17,11 @@ public abstract class AutoOpCodeBase extends OpCodeBase {
         // Will Run when Init Is Pressed
         waitForStart();
         if (opModeIsActive()) {
-            RobotActions.driveForward(motorSystem, 1.0, 2000);
+            RobotActions.drive(motorSystem, 0, 1f, 2000);
+            RobotActions.stopMotion(motorSystem);
             sleep(1000);
-            RobotActions.driveBackward(motorSystem, 1.0, 2000);
+            RobotActions.drive(motorSystem, 0, -1f, 2000);
+            RobotActions.stopMotion(motorSystem);
         }
     }
 }

@@ -19,10 +19,14 @@ public class AutoOpCode extends AutoOpCodeBase {
         // Will Run when Init Is Pressed
         waitForStart();
         while (opModeIsActive()) {
-            RobotActions.driveForward(motorSystem, 1.0, 3);
-            RobotActions.driveTurnLeft(motorSystem, 1.0, 3);
-            RobotActions.driveTurnRight(motorSystem, 1.0, 3);
-            RobotActions.driveBackward(motorSystem, 1.0, 3);
+            RobotActions.drive(motorSystem, 0f, 1f, 3);
+            RobotActions.stopMotion(motorSystem);
+            RobotActions.driveTurnLeft(motorSystem, 1f, 3);
+            RobotActions.stopMotion(motorSystem);
+            RobotActions.driveTurnRight(motorSystem, 1f, 3);
+            RobotActions.stopMotion(motorSystem);
+            RobotActions.drive(motorSystem, 0f, -1f, 3);
+            RobotActions.stopMotion(motorSystem);
         }
     }
 }

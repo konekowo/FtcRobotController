@@ -23,7 +23,7 @@ public class RobotActions {
 
     /**
      * Extend the arm.
-     * @param power The speed at which to extend the arm at. Negative power unextends it, positive power extends it.
+     * @param power The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
      * @param time The time to extend for.
      * @param arm The arm to extend.
      */
@@ -34,21 +34,18 @@ public class RobotActions {
         }
     }
 
-    public static void driveForward(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("top_left_motor", power);
-        motorSystem.setPower("top_right_motor", power);
-        motorSystem.setPower("bottom_left_motor", power);
-        motorSystem.setPower("bottom_right_motor", power);
-        if (time > 0) {
-            sleep(time);
-        }
-    }
-
-    public static void driveBackward(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("top_left_motor", -power);
-        motorSystem.setPower("top_right_motor", -power);
-        motorSystem.setPower("bottom_left_motor", -power);
-        motorSystem.setPower("bottom_right_motor", -power);
+    /**
+     * Drive the robot in any direction.
+     * @param motorSystem The MotorSystem
+     * @param powerX The x speed
+     * @param powerY The y speed
+     * @param time The time to drive for.
+     */
+    public static void drive(MotorSystem motorSystem, double powerX, double powerY, long time) {
+        motorSystem.setPower("top_left_motor", powerY);
+        motorSystem.setPower("top_right_motor", powerY);
+        motorSystem.setPower("bottom_left_motor", powerY);
+        motorSystem.setPower("bottom_right_motor", powerY);
         if (time > 0) {
             sleep(time);
         }
@@ -65,6 +62,12 @@ public class RobotActions {
         motorSystem.setPower("bottom_right_motor", 0);
     }
 
+    /**
+     * Rotates the robot to the left.
+     * @param motorSystem The MotorSystem
+     * @param power The speed to turn at.
+     * @param time The time to turn for.
+     */
     public static void driveTurnLeft(MotorSystem motorSystem, double power, long time) {
         motorSystem.setPower("top_right_motor", power);
         motorSystem.setPower("bottom_left_motor", power);
@@ -77,6 +80,12 @@ public class RobotActions {
         }
     }
 
+    /**
+     * Rotates the robot to the right.
+     * @param motorSystem The MotorSystem
+     * @param power The speed to turn at.
+     * @param time The time to turn for.
+     */
     public static void driveTurnRight(MotorSystem motorSystem, double power, long time) {
         motorSystem.setPower("top_left_motor", power);
         motorSystem.setPower("bottom_right_motor", power);
