@@ -35,20 +35,20 @@ public class RobotActions {
     }
 
     public static void driveForward(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("top_left_motor", -power);
-        motorSystem.setPower("top_right_motor", -power);
+        motorSystem.setPower("top_left_motor", power);
+        motorSystem.setPower("top_right_motor", power);
         motorSystem.setPower("bottom_left_motor", power);
-        motorSystem.setPower("bottom_right_motor", -power);
+        motorSystem.setPower("bottom_right_motor", power);
         if (time > 0) {
             sleep(time);
         }
     }
 
     public static void driveBackward(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("top_left_motor", power);
-        motorSystem.setPower("top_right_motor", power);
+        motorSystem.setPower("top_left_motor", -power);
+        motorSystem.setPower("top_right_motor", -power);
         motorSystem.setPower("bottom_left_motor", -power);
-        motorSystem.setPower("bottom_right_motor", power);
+        motorSystem.setPower("bottom_right_motor", -power);
         if (time > 0) {
             sleep(time);
         }
@@ -66,28 +66,24 @@ public class RobotActions {
     }
 
     public static void driveTurnLeft(MotorSystem motorSystem, double power, long time) {
-        DcMotor topLeftMotor = motorSystem.getMotor("top_left_motor");
-        DcMotor bottomRightMotor = motorSystem.getMotor("bottom_right_motor");
         motorSystem.setPower("top_right_motor", power);
         motorSystem.setPower("bottom_left_motor", power);
-        if (topLeftMotor != null && bottomRightMotor != null) {
-            motorSystem.setPower("top_left_motor", topLeftMotor.getPower() / 2f);
-            motorSystem.setPower("bottom_right_motor", bottomRightMotor.getPower() / 2f);
-        }
+        motorSystem.setPower("top_left_motor",
+                motorSystem.getPower("top_left_motor") / (1 + power));
+        motorSystem.setPower("bottom_right_motor",
+                motorSystem.getPower("bottom_right_motor") / (1 + power));
         if (time > 0) {
             sleep(time);
         }
     }
 
     public static void driveTurnRight(MotorSystem motorSystem, double power, long time) {
-        DcMotor topLeftMotor = motorSystem.getMotor("top_right_motor");
-        DcMotor bottomRightMotor = motorSystem.getMotor("bottom_left_motor");
         motorSystem.setPower("top_left_motor", power);
         motorSystem.setPower("bottom_right_motor", power);
-        if (topLeftMotor != null && bottomRightMotor != null) {
-            motorSystem.setPower("top_right_motor", topLeftMotor.getPower() / 2f);
-            motorSystem.setPower("bottom_left_motor", bottomRightMotor.getPower() / 2f);
-        }
+        motorSystem.setPower("top_right_motor",
+                motorSystem.getPower("top_right_motor") / (1 + power));
+        motorSystem.setPower("bottom_left_motor",
+                motorSystem.getPower("bottom_left_motor") / (1 + power));
         if (time > 0) {
             sleep(time);
         }

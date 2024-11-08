@@ -13,10 +13,10 @@ public abstract class OpCodeBase extends LinearOpMode {
      */
     protected void initMotorSystem() {
         motorSystem = new MotorSystem(hardwareMap, telemetry);
-        motorSystem.addMotor("top_left_motor");
-        motorSystem.addMotor("top_right_motor");
-        motorSystem.addMotor("bottom_left_motor");
-        motorSystem.addMotor("bottom_right_motor");
+        motorSystem.addMotor("top_left_motor", true);
+        motorSystem.addMotor("top_right_motor", true);
+        motorSystem.addMotor("bottom_left_motor", false);
+        motorSystem.addMotor("bottom_right_motor", true);
         //motorSystem.addMotor("arm_extender");
         //motorSystem.addMotor("robotic_arm");
     }
