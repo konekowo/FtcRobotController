@@ -20,8 +20,8 @@ public class AutoOpCode extends AutoOpCodeBase {
         waitForStart();
         while (opModeIsActive()) {
             RobotActions.driveForward(motorSystem, 1.0, 3);
-            RobotActions.driveLeft(motorSystem, 1.0, 3);
-            RobotActions.driveRight(motorSystem, 1.0, 3);
+            RobotActions.driveTurnLeft(motorSystem, 1.0, 3);
+            RobotActions.driveTurnRight(motorSystem, 1.0, 3);
             RobotActions.driveBackward(motorSystem, 1.0, 3);
         }
     }
