@@ -7,12 +7,12 @@ import org.jetbrains.annotations.NotNull;
 public class RobotActions {
 
     /**
-     * Raise or Lower the arms of the robot.
+     * Raise or lower the arms of the robot.
      * @param power The speed at which to raise or lower it at. Negative power lowers it, positive power raises it.
      * @param time The time to raise for.
      * @param arm The robotic arm to raise or lower.
      */
-    public static void raiseOrLowerArm(double power, long time, DcMotor arm) {
+    public static void raiseArm(double power, long time, DcMotor arm) {
         if (arm != null) {
             arm.setPower(power);
         }
@@ -22,10 +22,10 @@ public class RobotActions {
     }
 
     /**
-     * Extend the arm.
+     * Extend or retract the arm.
      * @param power The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
-     * @param time The time to extend for.
-     * @param arm The arm to extend.
+     * @param time The time to extend or retract for.
+     * @param arm The arm to extend or retract.
      */
     public static void extendArm(double power, long time, DcMotor arm) {
         arm.setPower(power);
