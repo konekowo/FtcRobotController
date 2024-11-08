@@ -24,7 +24,7 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
             motors[motorName] = motor
             speeds.clear()
             if (isReversed) {
-                reversedMotors.add(motorName);
+                reversedMotors.add(motorName)
             }
         } catch (e: IllegalArgumentException) {
             if (!warnedMotors.contains(motorName)) {
@@ -49,9 +49,9 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
      * @param power Power of the Motor
      */
     fun setPower(motorName: String, power: Double) {
-        var convertedPower: Double = power;
-        if (reversedMotors.contains(motorName)){
-            convertedPower = -power;
+        var convertedPower: Double = power
+        if (reversedMotors.contains(motorName)) {
+            convertedPower = -power
         }
         if (getPower(motorName) != convertedPower) {
             speeds[motorName] = convertedPower
@@ -67,9 +67,9 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
         val motor: DcMotor = getMotor(motorName) ?: return 0.0
         return if (speeds[motorName] == null) {
             if (reversedMotors.contains(motorName)) {
-                -motor.power;
+                -motor.power
             } else {
-                motor.power;
+                motor.power
             }
         } else {
             speeds[motorName]!!
@@ -90,8 +90,8 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
      */
     fun updateMotors() {
         for (speed in speeds) {
-            val motorName: String = speed.key;
-            val power: Double = speed.value;
+            val motorName: String = speed.key
+            val power: Double = speed.value
             val motor: DcMotor = getMotor(motorName) ?: continue
             if (motor.power != power) {
                 motor.power = power
