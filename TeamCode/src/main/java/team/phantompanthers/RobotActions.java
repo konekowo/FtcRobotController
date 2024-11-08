@@ -11,11 +11,10 @@ public class RobotActions {
      * @param time  The time to raise for.
      * @param arm   The robotic arm to raise or lower.
      */
-    public static void raiseArm(double power, long time, DcMotor arm) {
-        if (arm != null) {
-            arm.setPower(power);
-        }
+    public static void raiseArm(MotorSystem motorSystem, double power, long time, String arm) {
+        motorSystem.setPower(arm, power);
         if (time > 0) {
+            motorSystem.updateMotors();
             sleep(time);
         }
     }
@@ -27,9 +26,10 @@ public class RobotActions {
      * @param time  The time to extend or retract for.
      * @param arm   The arm to extend or retract.
      */
-    public static void extendArm(double power, long time, DcMotor arm) {
-        arm.setPower(power);
+    public static void extendArm(MotorSystem motorSystem, double power, long time, String arm) {
+        motorSystem.setPower(arm, power);
         if (time > 0) {
+            motorSystem.updateMotors();
             sleep(time);
         }
     }
@@ -43,11 +43,12 @@ public class RobotActions {
      * @param time        The time to drive for.
      */
     public static void drive(MotorSystem motorSystem, double powerX, double powerY, long time) {
-        motorSystem.setPower("top_left_motor", powerY);
-        motorSystem.setPower("top_right_motor", powerY);
-        motorSystem.setPower("bottom_left_motor", powerY);
-        motorSystem.setPower("bottom_right_motor", powerY);
+        motorSystem.setPower("top_left_motor", powerY * powerX);
+        motorSystem.setPower("top_right_motor", powerY * -powerX);
+        motorSystem.setPower("bottom_left_motor", powerY * powerX);
+        motorSystem.setPower("bottom_right_motor", powerY * -powerX);
         if (time > 0) {
+            motorSystem.updateMotors();
             sleep(time);
         }
     }
@@ -62,6 +63,7 @@ public class RobotActions {
         motorSystem.setPower("top_right_motor", 0);
         motorSystem.setPower("bottom_left_motor", 0);
         motorSystem.setPower("bottom_right_motor", 0);
+        motorSystem.updateMotors();
     }
 
     /**
@@ -79,6 +81,7 @@ public class RobotActions {
         motorSystem.setPower("bottom_right_motor",
                 motorSystem.getPower("bottom_right_motor") * (1 - power));
         if (time > 0) {
+            motorSystem.updateMotors();
             sleep(time);
         }
     }
@@ -98,6 +101,7 @@ public class RobotActions {
         motorSystem.setPower("bottom_left_motor",
                 motorSystem.getPower("bottom_left_motor") * (1 - power));
         if (time > 0) {
+            motorSystem.updateMotors();
             sleep(time);
         }
     }
