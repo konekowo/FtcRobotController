@@ -22,7 +22,6 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
         try {
             val motor: DcMotor = hardwareMap.get(DcMotor::class.java, motorName)
             motors[motorName] = motor
-            speeds.clear()
             if (isReversed) {
                 reversedMotors.add(motorName)
             }
