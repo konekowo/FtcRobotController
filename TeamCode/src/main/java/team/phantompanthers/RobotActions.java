@@ -1,7 +1,5 @@
 package team.phantompanthers;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
-
 public class RobotActions {
 
     /**
