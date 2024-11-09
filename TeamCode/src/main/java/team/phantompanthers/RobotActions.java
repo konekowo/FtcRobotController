@@ -9,8 +9,8 @@ public class RobotActions {
      * @param time  The time to raise for.
      * @param arm   The robotic arm to raise or lower.
      */
-    public static void raiseArm(MotorSystem motorSystem, double power, long time, String arm) {
-        motorSystem.setPower(arm, power);
+    public static void raiseArm(MotorSystem motorSystem, double power, long time) {
+        motorSystem.setPower("robotic_arm", power);
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
