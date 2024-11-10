@@ -1,5 +1,7 @@
 package team.phantompanthers.opcodes.player.impl;
 
+//TODO: Screw holes in the wood with the numbers, change the password on the RC
+
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import team.phantompanthers.ControlMappings;
