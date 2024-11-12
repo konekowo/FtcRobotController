@@ -24,8 +24,8 @@ public class RobotActions {
      * @param time  The time to extend or retract for.
      * @param arm   The arm to extend or retract.
      */
-    public static void extendArm(MotorSystem motorSystem, double power, long time, String arm) {
-        motorSystem.setPower(arm, power);
+    public static void extendArm(MotorSystem motorSystem, double power, long time, String armExtender) {
+        motorSystem.setPower(armExtender, power);
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
