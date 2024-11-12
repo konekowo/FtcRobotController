@@ -16,13 +16,10 @@ class ServoOBJSystem(private val hardwareMap: HardwareMap, private val telemetry
     private val reversedMotors: MutableList<String> = ArrayList()
     private val speeds: MutableMap<String, Double> = HashMap()
 
-    fun addMotor(motorName: String, isReversed: Boolean) {
+    fun addMotor(motorName: String) {
         try {
             val miniMotor: Servo = hardwareMap.get(Servo::class.java, motorName)
             miniMotors[motorName] = miniMotor
-            if (isReversed) {
-                reversedMotors.add(motorName)
-            }
         } catch (e: IllegalArgumentException) {
             if (!warnedMotors.contains(motorName)) {
                 telemetry.addLine("Warning: The motor '$motorName' was not found! The motor will not be operating, and may cause problems with the OpCode.")
