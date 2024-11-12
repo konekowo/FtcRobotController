@@ -10,7 +10,7 @@ import team.phantompanthers.opcodes.auto.AutoOpCodeBase;
  * <h1>AutoOpCode Documentation</h1>
  * The Actual TeleOp Code for the FTC Into the deep for the Phantom Panthers,
  */
-@Autonomous(name = "AutoOpCode", group = "Linear Opmode")
+@Autonomous(name = "IntoTheDeepAuto", group = "Linear Opmode")
 public class AutoOpCode extends AutoOpCodeBase {
 
     @Override
