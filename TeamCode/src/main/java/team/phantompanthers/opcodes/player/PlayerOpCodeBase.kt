@@ -4,11 +4,11 @@ import com.qualcomm.robotcore.hardware.Gamepad
 import team.phantompanthers.opcodes.OpCodeBase
 
 abstract class PlayerOpCodeBase : OpCodeBase() {
+    val currentController = controllerSwitchCheck()
     /**
      * Check if there is input from a gamePad.
      * @return The current controller being used.
      */
-    val currentController = controllerSwitchCheck()
     private fun controllerSwitchCheck(): String {
         return when {
             isGamePadActive(gamepad1) -> "Gamepad 1 is being used"
