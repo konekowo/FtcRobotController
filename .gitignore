@@ -8,6 +8,7 @@
 
 # Files for the ART/Dalvik VM
 *.dex
+list_commits.sh
 
 # Java/JDK files
 *.class
