@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import team.phantompanthers.ControlMappings;
 import team.phantompanthers.RobotActions;
+import team.phantompanthers.opcodes.OpCodeBase;
 import team.phantompanthers.opcodes.player.PlayerOpCodeBase;
 
 @TeleOp(name = "IntoTheDeep", group = "Linear Opmode")
@@ -18,10 +19,22 @@ public class PlayerOpCode extends PlayerOpCodeBase {
         initMotorSystem();
 
         telemetry.addData("Status", "Initialized");
+        telemetry.addData("Current Controller", getCurrentController());
         telemetry.update();
         // Will Run when Init Is Pressed
         waitForStart();
         resetRuntime();
+        if(opModeIsActive()){
+            telemetry.addData("Status", "Running");
+            telemetry.addData("Runtime", getRuntime());
+            telemetry.update();
+        }
+        if(isStopRequested()){
+            telemetry.update();
+        } else{
+            telemetry.addData("Status", "Stopped");
+            telemetry.update();
+        }
         while (opModeIsActive()) {
             RobotActions.drive(motorSystem, ControlMappings.MOVEMENT_X.getFloat(gamepad1),
                     ControlMappings.MOVEMENT_Y.getFloat(gamepad1), 0);
