@@ -38,9 +38,9 @@ class ServoOBJSystem(private val hardwareMap: HardwareMap, private val telemetry
     }
 
     /**
-     * Sets the power of the motor
+     * Sets the position of the motor
      * @param motorName Name of the Motor
-     * @param power Power of the Motor
+     * @param position position of the Motor
      */
     fun setPosition(motorName: String, position: Double) {
         var convertedPosition: Double = position
@@ -53,9 +53,9 @@ class ServoOBJSystem(private val hardwareMap: HardwareMap, private val telemetry
     }
 
     /**
-     * Gets the power of the motor
+     * Gets the position of the motor
      * @param motorName Name of the Motor
-     * @return Power of the motor
+     * @return position of the motor
      */
     fun getPosition(motorName: String): Double {
         val motor: Servo = getMotor(motorName) ?: return 0.0
@@ -71,7 +71,7 @@ class ServoOBJSystem(private val hardwareMap: HardwareMap, private val telemetry
     }
 
     /**
-     * Removes the motor and sets its power to zero.
+     * Removes the motor and sets its position to zero.
      * @param motorName Name of the Motor
      */
     fun removeMotor(motorName: String) {
@@ -85,10 +85,10 @@ class ServoOBJSystem(private val hardwareMap: HardwareMap, private val telemetry
     fun updateMotors() {
         for (speed in speeds) {
             val motorName: String = speed.key
-            val power: Double = speed.value
+            val position: Double = speed.value
             val motor: Servo = getMotor(motorName) ?: continue
-            if (motor.position != power) {
-                motor.position = power
+            if (motor.position != position) {
+                motor.position = position
             }
         }
         speeds.clear()
