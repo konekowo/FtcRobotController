@@ -41,10 +41,11 @@ public class RobotActions {
      * @param time        The time to drive for.
      */
     public static void drive(MotorSystem motorSystem, double powerX, double powerY, long time) {
-        motorSystem.setPower("top_left_motor", powerY * powerX);
-        motorSystem.setPower("top_right_motor", powerY * -powerX);
-        motorSystem.setPower("bottom_left_motor", powerY * powerX);
-        motorSystem.setPower("bottom_right_motor", powerY * -powerX);
+        motorSystem.setPower("top_left_motor", powerY * (1 - powerX));
+        motorSystem.setPower("top_right_motor", powerY);
+        motorSystem.setPower("bottom_left_motor", powerY);
+        motorSystem.setPower("bottom_right_motor", powerY);
+        System.out.println(powerY);
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
@@ -72,12 +73,12 @@ public class RobotActions {
      * @param time        The time to turn for.
      */
     public static void driveTurnLeft(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("top_right_motor", power);
-        motorSystem.setPower("bottom_left_motor", power);
-        motorSystem.setPower("top_left_motor",
-                motorSystem.getPower("top_left_motor") * (1 - power));
-        motorSystem.setPower("bottom_right_motor",
-                motorSystem.getPower("bottom_right_motor") * (1 - power));
+        if (power > 0) {
+            motorSystem.setPower("top_left_motor", power);
+            motorSystem.setPower("bottom_left_motor", power);
+            motorSystem.setPower("top_right_motor", -power);
+            motorSystem.setPower("bottom_right_motor", -power);
+        }
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
@@ -92,12 +93,12 @@ public class RobotActions {
      * @param time        The time to turn for.
      */
     public static void driveTurnRight(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("top_left_motor", power);
-        motorSystem.setPower("bottom_right_motor", power);
-        motorSystem.setPower("top_right_motor",
-                motorSystem.getPower("top_right_motor") * (1 - power));
-        motorSystem.setPower("bottom_left_motor",
-                motorSystem.getPower("bottom_left_motor") * (1 - power));
+        if (power > 0) {
+            motorSystem.setPower("top_right_motor", power);
+            motorSystem.setPower("bottom_right_motor", power);
+            motorSystem.setPower("top_left_motor", - power);
+            motorSystem.setPower("bottom_left_motor", -power);
+        }
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);

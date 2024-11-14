@@ -17,7 +17,7 @@ public abstract class OpCodeBase extends LinearOpMode {
         motorSystem.addMotor("top_right_motor", true);
         motorSystem.addMotor("bottom_left_motor", false);
         motorSystem.addMotor("bottom_right_motor", true);
-        motorSystem.addMotor("robotic_arm", false);
+        //motorSystem.addMotor("robotic_arm", false);
         // motorSystem.addMotor("robotic_extender",false);
     }
 
