@@ -5,12 +5,11 @@ public class RobotActions {
     /**
      * Raise or lower the arms of the robot.
      *
-     * @param power The speed at which to raise or lower it at. Negative power lowers it, positive power raises it.
+     * @param position The speed at which to raise or lower it at. Negative power lowers it, positive power raises it.
      * @param time  The time to raise for.
-     * @param arm   The robotic arm to raise or lower.
      */
-    public static void raiseArm(ServoOBJSystem servoSystem, double power, long time) {
-        servoSystem.setPosition("robotic_arm", power);
+    public static void raiseArm(ServoOBJSystem servoSystem, double position, long time) {
+        servoSystem.setPosition("robotic_arm", position);
         if (time > 0) {
             servoSystem.updateMotors();
             sleep(time);
@@ -20,9 +19,10 @@ public class RobotActions {
     /**
      * Extend or retract the arm.
      *
-     * @param power The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
+     * @param position is the position the servo will go
+     * The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
      * @param time  The time to extend or retract for.
-     * @param arm   The arm to extend or retract.
+     * @param armExtender   The arm to extend or retract.
      */
     public static void extendArm(ServoOBJSystem servoSystem, double position, long time, String armExtender) {
         servoSystem.setPosition(armExtender, position);
