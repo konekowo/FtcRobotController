@@ -9,10 +9,10 @@ public class RobotActions {
      * @param time  The time to raise for.
      * @param arm   The robotic arm to raise or lower.
      */
-    public static void raiseArm(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("robotic_arm", power);
+    public static void raiseArm(ServoOBJSystem servoSystem, double power, long time) {
+        servoSystem.setPosition("robotic_arm", power);
         if (time > 0) {
-            motorSystem.updateMotors();
+            servoSystem.updateMotors();
             sleep(time);
         }
     }
@@ -24,10 +24,10 @@ public class RobotActions {
      * @param time  The time to extend or retract for.
      * @param arm   The arm to extend or retract.
      */
-    public static void extendArm(MotorSystem motorSystem, double power, long time, String armExtender) {
-        motorSystem.setPower(armExtender, power);
+    public static void extendArm(ServoOBJSystem servoSystem, double position, long time, String armExtender) {
+        servoSystem.setPosition(armExtender, position);
         if (time > 0) {
-            motorSystem.updateMotors();
+            servoSystem.updateMotors();
             sleep(time);
         }
     }
