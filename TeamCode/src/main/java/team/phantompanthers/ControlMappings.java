@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 public enum ControlMappings {
     MOVEMENT_X("left_stick_x"),
-    MOVEMENT_Y("right_stick_y"),
+    MOVEMENT_Y("left_stick_y"),
     TURN_LEFT("right_stick_x", value -> Math.max(-((float) value), 0f)),
     TURN_RIGHT("right_stick_x", value -> Math.max((float) value, 0f)),
     EXTEND_ARM("right_trigger"),
