@@ -5,13 +5,13 @@ public class RobotActions {
     /**
      * Raise or lower the arms of the robot.
      *
-     * @param position The speed at which to raise or lower it at. Negative power lowers it, positive power raises it.
+     * @param power The speed at which to raise or lower it at. Negative power lowers it, positive power raises it.
      * @param time  The time to raise for.
      */
-    public static void raiseArm(ServoOBJSystem servoSystem, double position, long time) {
-        servoSystem.setPosition("robotic_arm", position);
+    public static void raiseArm(MotorSystem motorSystem, double power, long time) {
+        motorSystem.setPower("robotic_arm", power);
         if (time > 0) {
-            servoSystem.updateMotors();
+            motorSystem.updateMotors();
             sleep(time);
         }
     }
@@ -19,13 +19,39 @@ public class RobotActions {
     /**
      * Extend or retract the arm.
      *
-     * @param position is the position the servo will go
+     * @param power how much the arm  will extend
      * The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
      * @param time  The time to extend or retract for.
-     * @param armExtender   The arm to extend or retract.
      */
-    public static void extendArm(ServoOBJSystem servoSystem, double position, long time, String armExtender) {
-        servoSystem.setPosition(armExtender, position);
+    public static void extendArm(MotorSystem motorSystem, double power, long time) {
+        motorSystem.setPower("arm_extender", power);
+        if (time > 0) {
+            motorSystem.updateMotors();
+            sleep(time);
+        }
+    }
+    /**
+     *
+     * @param servoSystem is the servo that is mapped
+     * @param position is how far the servo will rotation to 360 degrees
+     * @param time is how long it'll last.
+     */
+    public static void horizontalClaws(ServoOBJSystem servoSystem, double position, long time){
+        servoSystem.setPosition("Claw_Horizontal", position);
+        if (time > 0) {
+            servoSystem.updateMotors();
+            sleep(time);
+        }
+    }
+
+    /**
+     *
+     * @param servoSystem is the servo that is mapped
+     * @param position is how far the servo will rotation to 360 degrees
+     * @param time is how long it'll last.
+     */
+    public static void verticalClaws(ServoOBJSystem servoSystem, double position, long time){
+        servoSystem.setPosition("Claw_Vertical", position);
         if (time > 0) {
             servoSystem.updateMotors();
             sleep(time);

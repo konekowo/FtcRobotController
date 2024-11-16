@@ -14,7 +14,7 @@ class ServoOBJSystem(private val hardwareMap: HardwareMap, private val telemetry
     private val miniMotors: MutableMap<String, Servo> = HashMap()
     private val warnedMotors: MutableList<String> = ArrayList()
     private val reversedMotors: MutableList<String> = ArrayList()
-    private val speeds: MutableMap<String, Double> = HashMap()
+    private val positions: MutableMap<String, Double> = HashMap()
 
     fun addMotor(motorName: String) {
         try {
@@ -48,7 +48,7 @@ class ServoOBJSystem(private val hardwareMap: HardwareMap, private val telemetry
             convertedPosition = -position
         }
         if (getPosition(motorName) != convertedPosition) {
-            speeds[motorName] = convertedPosition
+            positions[motorName] = convertedPosition
         }
     }
 
@@ -59,14 +59,14 @@ class ServoOBJSystem(private val hardwareMap: HardwareMap, private val telemetry
      */
     fun getPosition(motorName: String): Double {
         val motor: Servo = getMotor(motorName) ?: return 0.0
-        return if (speeds[motorName] == null) {
+        return if (positions[motorName] == null) {
             if (reversedMotors.contains(motorName)) {
                 -motor.position
             } else {
                 motor.position
             }
         } else {
-            speeds[motorName]!!
+            positions[motorName]!!
         }
     }
 
@@ -83,14 +83,14 @@ class ServoOBJSystem(private val hardwareMap: HardwareMap, private val telemetry
      * Updates the motors that were changed with the changed speeds.
      */
     fun updateMotors() {
-        for (speed in speeds) {
-            val motorName: String = speed.key
-            val position: Double = speed.value
+        for (position in positions) {
+            val motorName: String = position.key
+            val position: Double = position.value
             val motor: Servo = getMotor(motorName) ?: continue
             if (motor.position != position) {
                 motor.position = position
             }
         }
-        speeds.clear()
+        positions.clear()
     }
 }
