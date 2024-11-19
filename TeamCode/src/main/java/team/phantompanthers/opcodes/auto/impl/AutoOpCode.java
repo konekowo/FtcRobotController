@@ -21,6 +21,9 @@ public class AutoOpCode extends AutoOpCodeBase {
         while (opModeIsActive()) {
             RobotActions.drive(motorSystem, 0f, 1f, 3);
             RobotActions.stopMotion(motorSystem);
+            RobotActions.drive(motorSystem, 0f, -0.4f, 2);
+            RobotActions.stopMotion(motorSystem);
+            RobotActions.driveTurnLeft(motorSystem, -0.4f, 2);
         }
     }
 }
