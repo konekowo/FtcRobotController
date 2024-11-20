@@ -7,7 +7,7 @@ public class RobotActions {
      *
      * @param power The speed at which to raise or lower it at. Negative power lowers it, positive power raises it.
      * @param time  The time to raise for.
-     * @param arm   The robotic arm to raise or lower.
+     * The robotic arm to raise or lower.
      */
     public static void raiseArm(MotorSystem motorSystem, double power, long time) {
         motorSystem.setPower("robotic_arm", power);
@@ -22,7 +22,7 @@ public class RobotActions {
      *
      * @param power The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
      * @param time  The time to extend or retract for.
-     * @param arm   The arm to extend or retract.
+     * The arm to extend or retract.
      */
     public static void extendArm(MotorSystem motorSystem, double power, long time, String armExtender) {
         motorSystem.setPower(armExtender, power);
