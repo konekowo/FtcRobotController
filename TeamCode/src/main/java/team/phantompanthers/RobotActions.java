@@ -1,5 +1,7 @@
 package team.phantompanthers;
 
+import androidx.core.math.MathUtils;
+
 public class RobotActions {
 
     /**
@@ -41,11 +43,10 @@ public class RobotActions {
      * @param time        The time to drive for.
      */
     public static void drive(MotorSystem motorSystem, double powerX, double powerY, long time) {
-        motorSystem.setPower("top_left_motor", powerY * (1 - powerX));
-        motorSystem.setPower("top_right_motor", powerY);
-        motorSystem.setPower("bottom_left_motor", powerY);
-        motorSystem.setPower("bottom_right_motor", powerY);
-        System.out.println(powerY);
+        motorSystem.setPower("top_left_motor", MathUtils.clamp(-powerX + powerY, -1, 1));
+        motorSystem.setPower("top_right_motor", -MathUtils.clamp(-powerX - powerY, -1, 1));
+        motorSystem.setPower("bottom_left_motor", -MathUtils.clamp(-powerX - powerY, -1, 1));
+        motorSystem.setPower("bottom_right_motor", MathUtils.clamp(-powerX + powerY, -1, 1));
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
