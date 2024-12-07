@@ -23,9 +23,7 @@ public class RobotActions {
      * Extend or retract the arm.
      *
      * @param power how much the arm  will extend
-     * The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
-     * @param time  The time to extend or retract for.
-     * The arm to extend or retract.
+     *              The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
      */
     public static void extendArm(MotorSystem motorSystem, double power, long time) {
         motorSystem.setPower("arm_extender", power);

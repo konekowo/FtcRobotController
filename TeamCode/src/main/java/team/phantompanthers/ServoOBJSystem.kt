@@ -22,7 +22,7 @@ class ServoOBJSystem(private val hardwareMap: HardwareMap, private val telemetry
             miniMotors[motorName] = miniMotor
         } catch (e: IllegalArgumentException) {
             if (!warnedMotors.contains(motorName)) {
-                telemetry.addLine("Warning: The motor '$motorName' was not found! The motor will not be operating, and may cause problems with the OpCode.")
+                telemetry.addLine("Warning: The Servo-Motor'$motorName' was not found! The motor will not be operating, and may cause problems with the OpCode.")
                 warnedMotors.add(motorName)
             }
         }
