@@ -12,7 +12,7 @@ public class RobotActions {
      * The robotic arm to raise or lower.
      */
     public static void raiseArm(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("robotic_arm", power);
+        motorSystem.setPower("arm_extender", power);
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
@@ -26,23 +26,30 @@ public class RobotActions {
      *              The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
      */
     public static void extendArm(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("arm_extender", power);
+        motorSystem.setPower("arm_hex", power);
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
-            if(power >= 1){
-                motorSystem.setPower("arm_hex",power);
-            }
+        }
+    }
+    public static void unextendArm(MotorSystem motorSystem, double power, long time) {
+        motorSystem.setPower("arm_hex", -power);
+        if (time > 0) {
+            motorSystem.updateMotors();
+            sleep(time);
         }
     }
     /**
+     *
+     *
+     *
      *
      * @param servoSystem is the servo that is mapped
      * @param position is how far the servo will rotation to 360 degrees
      * @param time is how long it'll last.
      */
     public static void horizontalClaws(ServoOBJSystem servoSystem, double position, long time){
-        servoSystem.setPosition("Claw_Horizontal", position);
+        servoSystem.setPosition("claw", position);
         if (time > 0) {
             servoSystem.updateMotors();
             sleep(time);
@@ -56,7 +63,7 @@ public class RobotActions {
      * @param time is how long it'll last.
      */
     public static void verticalClaws(ServoOBJSystem servoSystem, double position, long time){
-        servoSystem.setPosition("Claw_Vertical", position);
+        servoSystem.setPosition("claw", position);
         if (time > 0) {
             servoSystem.updateMotors();
             sleep(time);

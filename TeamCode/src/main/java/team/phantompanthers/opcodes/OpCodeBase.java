@@ -20,11 +20,10 @@ public abstract class OpCodeBase extends LinearOpMode {
         motorSystem.addMotor("top_right_motor", true);
         motorSystem.addMotor("bottom_left_motor", false);
         motorSystem.addMotor("bottom_right_motor", true);
-        motorSystem.addMotor("robotic_arm",false);
+        //motorSystem.addMotor("robotic_arm",false);
         motorSystem.addMotor("arm_extender",false);
-        motorSystem.addHexMotor("arm_hex",false);
-        servoSystem.addMotor("Claw_Vertical");
-        servoSystem.addMotor("Claw_Horizontal");
+        motorSystem.addHexMotor("arm_hex",true);
+        servoSystem.addMotor("claw");
     }
 
 }

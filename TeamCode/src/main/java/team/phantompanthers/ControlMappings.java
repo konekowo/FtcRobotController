@@ -8,7 +8,9 @@ public enum ControlMappings {
     TURN_LEFT("right_stick_x", value -> Math.max(-((float) value), 0f)),
     TURN_RIGHT("right_stick_x", value -> Math.max((float) value, 0f)),
     EXTEND_ARM("right_trigger"),
-    GRIP_CLAW("left_trigger"),
+
+    UNEXTEND_ARM("left_trigger"),
+    GRIP_CLAW("right_bumper"),
     RAISE_ARM("right_stick_y");
 
     public final String fieldName;
