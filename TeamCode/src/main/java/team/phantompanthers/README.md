@@ -17,7 +17,7 @@ public static String someMethod(int someParam) {
 }
 ```
 
-## Use comment code in all your methods
+## Use comment code in all u methods
 
 I don't want to have to debug your code to know what it does if it's confusing, so please use
 comment code in all your methods!!

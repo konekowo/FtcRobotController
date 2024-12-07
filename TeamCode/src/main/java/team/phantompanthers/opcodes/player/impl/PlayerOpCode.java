@@ -27,8 +27,8 @@ public class PlayerOpCode extends PlayerOpCodeBase {
             RobotActions.driveTurnLeft(motorSystem, ControlMappings.TURN_LEFT.getFloat(gamepad1), 0);
             RobotActions.driveTurnRight(motorSystem, ControlMappings.TURN_RIGHT.getFloat(gamepad1), 0);
             RobotActions.raiseArm(motorSystem, ControlMappings.RAISE_ARM.getFloat(gamepad1), 0);
-            RobotActions.extendArm(motorSystem,ControlMappings.EXTEND_ARM.getFloat(gamepad1),0);
-            RobotActions.horizontalClaws(servoSystem,ControlMappings.EXTEND_ARM.getFloat(gamepad1),0);
+            RobotActions.extendArm(motorSystem,ControlMappings.EXTEND_ARM.getFloat(gamepad2),0);
+            RobotActions.horizontalClaws(servoSystem,ControlMappings.GRIP_CLAW.getFloat(gamepad2),0);
             motorSystem.updateMotors();
             servoSystem.updateMotors();
         }

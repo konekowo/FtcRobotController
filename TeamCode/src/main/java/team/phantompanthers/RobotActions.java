@@ -30,6 +30,9 @@ public class RobotActions {
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
+            if(power >= 1){
+                motorSystem.setPower("arm_hex",power);
+            }
         }
     }
     /**

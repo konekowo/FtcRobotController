@@ -32,6 +32,20 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
             }
         }
     }
+    fun addHexMotor(hexMotorName: String, isReversed: Boolean){
+        try {
+            val motor: DcMotor = hardwareMap.get(DcMotor::class.java, hexMotorName)
+            motors[hexMotorName] = motor
+            if (isReversed) {
+                reversedMotors.add(hexMotorName)
+            }
+        } catch (e: IllegalArgumentException) {
+            if (!warnedMotors.contains(hexMotorName)) {
+                telemetry.addLine("Warning: The Hex-motor '$hexMotorName' was not found! The motor will not be operating, and may cause problems with the OpCode.")
+                warnedMotors.add(hexMotorName)
+            }
+        }
+    }
 
     /**
      * Get Motor Name
