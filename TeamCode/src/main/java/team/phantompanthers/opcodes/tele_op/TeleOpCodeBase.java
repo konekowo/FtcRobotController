@@ -1,10 +1,9 @@
 package team.phantompanthers.opcodes.tele_op;
 
-import team.phantompanthers.RobotActions;
 import team.phantompanthers.opcodes.OpCodeBase;
 
 public abstract class TeleOpCodeBase extends OpCodeBase {
-    protected RobotActions robotActions;
+    protected TeleOpRobotActions robotActions;
 
     @Override
     public void runOpMode() {

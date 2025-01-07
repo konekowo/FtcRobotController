@@ -10,6 +10,7 @@ import team.phantompanthers.part_specific.ClawState;
 @TeleOp(name = "Normal Function", group = "Linear Opmode")
 public class NormalFunction extends TeleOpCodeBase {
     private boolean gripClawToggle = true;
+    private boolean lastGripClawButtonPressed = false;
 
     @Override
     public void runOpMode() {
@@ -20,9 +21,11 @@ public class NormalFunction extends TeleOpCodeBase {
         waitForStart();
         resetRuntime();
         while (opModeIsActive()) {
-            if (ControlMappings.GRIP_CLAW.getBoolean(gamepad1)) {
+            boolean isGripClawButtonPressed = ControlMappings.GRIP_CLAW.getBoolean(gamepad1);
+
+            // on GRIP_CLAW button down
+            if (isGripClawButtonPressed != lastGripClawButtonPressed && isGripClawButtonPressed) {
                 gripClawToggle = !gripClawToggle;
-                robotActions.sleep(200L);
             }
 
             robotActions.drive(ControlMappings.MOVEMENT_X.getFloat(gamepad1),
@@ -34,6 +37,8 @@ public class NormalFunction extends TeleOpCodeBase {
 
             motorSystem.updateMotors();
             servoSystem.updateServos();
+
+            lastGripClawButtonPressed = isGripClawButtonPressed;
         }
     }
 }
