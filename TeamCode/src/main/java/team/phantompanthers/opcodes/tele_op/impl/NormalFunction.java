@@ -1,6 +1,5 @@
 package team.phantompanthers.opcodes.tele_op.impl;
 
-//TODO: Screw holes in the wood with the numbers, change the password on the RC
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -11,9 +10,6 @@ import team.phantompanthers.part_specific.ClawState;
 @TeleOp(name = "Normal Function", group = "Linear Opmode")
 public class NormalFunction extends TeleOpCodeBase {
     private boolean gripClawToggle = true;
-    /**
-     * What Will Run During Op Mode
-     */
     @Override
     public void runOpMode() {
         super.runOpMode();
