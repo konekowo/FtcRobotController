@@ -10,6 +10,7 @@ import team.phantompanthers.opcodes.player.PlayerOpCodeBase;
 
 @TeleOp(name = "IntoTheDeep", group = "Linear Opmode")
 public class PlayerOpCode extends PlayerOpCodeBase {
+    private boolean gripClawToggle = true;
     /**
      * What Will Run During Op Mode
      */
@@ -23,14 +24,16 @@ public class PlayerOpCode extends PlayerOpCodeBase {
         waitForStart();
         resetRuntime();
         while (opModeIsActive()) {
-            RobotActions.drive(motorSystem, ControlMappings.MOVEMENT_X.getFloat(gamepad1), ControlMappings.MOVEMENT_Y.getFloat(gamepad1), 0);
+            if (ControlMappings.GRIP_CLAW.getBoolean(gamepad1)) {
+                gripClawToggle = !gripClawToggle;
+                RobotActions.sleep(200L);
+            }
+            RobotActions.drive(motorSystem, ControlMappings.MOVEMENT_X.getFloat(gamepad1),
+                    ControlMappings.MOVEMENT_Y.getFloat(gamepad1), 0);
             RobotActions.driveTurnLeft(motorSystem, ControlMappings.TURN_LEFT.getFloat(gamepad1), 0);
             RobotActions.driveTurnRight(motorSystem, ControlMappings.TURN_RIGHT.getFloat(gamepad1), 0);
-            RobotActions.raiseArm(motorSystem, ControlMappings.RAISE_ARM.getFloat(gamepad2), 0);
-            RobotActions.extendArm(motorSystem,ControlMappings.EXTEND_ARM.getFloat(gamepad2),0);
-            RobotActions.unextendArm(motorSystem,ControlMappings.UNEXTEND_ARM.getFloat(gamepad2),0);
-            RobotActions.horizontalClaws(servoSystem,ControlMappings.GRIP_CLAW.getFloat(gamepad2),0);
-            RobotActions.verticalClaws(servoSystem,ControlMappings.GRIP_CLAW.getFloat(gamepad2),0);
+            RobotActions.verticalClaws(servoSystem, gripClawToggle);
+            RobotActions.moveArm(motorSystem, -ControlMappings.RAISE_ARM.getFloat(gamepad1), 0);
             motorSystem.updateMotors();
             servoSystem.updateMotors();
         }

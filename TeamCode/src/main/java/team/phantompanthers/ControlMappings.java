@@ -5,12 +5,12 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 public enum ControlMappings {
     MOVEMENT_X("left_stick_x"),
     MOVEMENT_Y("left_stick_y"),
-    TURN_LEFT("right_stick_x", value -> Math.max(-((float) value), 0f)),
-    TURN_RIGHT("right_stick_x", value -> Math.max((float) value, 0f)),
+    TURN_LEFT("left_trigger"),
+    TURN_RIGHT("right_trigger"),
     EXTEND_ARM("right_trigger"),
 
     UNEXTEND_ARM("left_trigger"),
-    GRIP_CLAW("right_bumper"),
+    GRIP_CLAW("a"),
     RAISE_ARM("right_stick_y");
 
     public final String fieldName;

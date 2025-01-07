@@ -62,12 +62,9 @@ public class RobotActions {
      * @param position is how far the servo will rotation to 360 degrees
      * @param time is how long it'll last.
      */
-    public static void verticalClaws(ServoOBJSystem servoSystem, double position, long time){
-        servoSystem.setPosition("claw", position);
-        if (time > 0) {
-            servoSystem.updateMotors();
-            sleep(time);
-        }
+    public static void verticalClaws(ServoOBJSystem servoSystem, boolean isPressed){
+        servoSystem.setPosition("claw", isPressed ? 0.6D : 0.1D);
+        servoSystem.updateMotors();
     }
 
     /**
@@ -86,6 +83,7 @@ public class RobotActions {
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
+            stopMotion(motorSystem);
         }
     }
 
@@ -119,6 +117,11 @@ public class RobotActions {
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
+            motorSystem.setPower("top_left_motor", 0);
+            motorSystem.setPower("bottom_left_motor", 0);
+            motorSystem.setPower("top_right_motor", 0);
+            motorSystem.setPower("bottom_right_motor", 0);
+            motorSystem.updateMotors();
         }
     }
 
@@ -139,6 +142,21 @@ public class RobotActions {
         if (time > 0) {
             motorSystem.updateMotors();
             sleep(time);
+            motorSystem.setPower("top_left_motor", 0);
+            motorSystem.setPower("bottom_left_motor", 0);
+            motorSystem.setPower("top_right_motor", 0);
+            motorSystem.setPower("bottom_right_motor", 0);
+            motorSystem.updateMotors();
+        }
+    }
+
+    public static void moveArm(MotorSystem motorSystem, double power, long time) {
+        motorSystem.setPower("arm_motor", -(power / 2f));
+        if (time > 0) {
+            motorSystem.updateMotors();
+            sleep(time);
+            motorSystem.setPower("arm_motor", 0);
+            motorSystem.updateMotors();
         }
     }
 
@@ -147,7 +165,7 @@ public class RobotActions {
      *
      * @param milliseconds The time to suspend the thread for.
      */
-    private static void sleep(long milliseconds) {
+    public static void sleep(long milliseconds) {
         try {
             Thread.sleep(milliseconds);
         } catch (InterruptedException e) {
