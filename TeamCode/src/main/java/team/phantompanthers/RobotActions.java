@@ -4,8 +4,6 @@ import androidx.core.math.MathUtils;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.jetbrains.annotations.NotNull;
-
 import team.phantompanthers.part_specific.ClawState;
 import team.phantompanthers.part_specific.MotorSystem;
 import team.phantompanthers.part_specific.ServoSystem;
@@ -21,6 +19,7 @@ public abstract class RobotActions {
 
     /**
      * Drive the robot in any direction.
+     *
      * @param powerX The x-speed at which the robot drives in.
      * @param powerY The y-speed at which the robot drives in.
      */
@@ -33,6 +32,7 @@ public abstract class RobotActions {
 
     /**
      * Rotate the robot counterclockwise.
+     *
      * @param power The speed at which the robot rotates.
      */
     public void driveTurnLeft(double power) {
@@ -46,19 +46,21 @@ public abstract class RobotActions {
 
     /**
      * Rotate the robot clockwise.
+     *
      * @param power The speed at which the robot rotates.
      */
     public void driveTurnRight(double power) {
         if (power > 0) {
             motorSystem.setPower("top_right_motor", power);
             motorSystem.setPower("bottom_right_motor", power);
-            motorSystem.setPower("top_left_motor", - power);
+            motorSystem.setPower("top_left_motor", -power);
             motorSystem.setPower("bottom_left_motor", -power);
         }
     }
 
     /**
      * Move the arm up or down.
+     *
      * @param power The speed at which to move the arm.
      */
     public void moveArm(double power) {
@@ -67,9 +69,10 @@ public abstract class RobotActions {
 
     /**
      * Open or close the claw.
+     *
      * @param clawState Whether to open or close the claw.
      */
-    public void setClawState(ClawState clawState){
+    public void setClawState(ClawState clawState) {
         servoSystem.setPosition("claw", clawState == ClawState.CLOSE ? 0.6D : 0.1D);
     }
 
@@ -84,6 +87,7 @@ public abstract class RobotActions {
 
     /**
      * Suspend the current thread for a specified amount of time.
+     *
      * @param time The time in time to suspend the current thread for.
      */
     public void sleep(long time) {

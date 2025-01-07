@@ -10,6 +10,7 @@ import team.phantompanthers.part_specific.ClawState;
 @TeleOp(name = "Normal Function", group = "Linear Opmode")
 public class NormalFunction extends TeleOpCodeBase {
     private boolean gripClawToggle = true;
+
     @Override
     public void runOpMode() {
         super.runOpMode();

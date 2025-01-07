@@ -10,14 +10,14 @@ public abstract class OpCodeBase extends LinearOpMode {
     protected ServoSystem servoSystem;
 
     @Override
-    public void runOpMode()  {
+    public void runOpMode() {
         motorSystem = new MotorSystem(hardwareMap, telemetry);
         servoSystem = new ServoSystem(hardwareMap, telemetry);
         motorSystem.addMotor("top_left_motor", true);
         motorSystem.addMotor("top_right_motor", true);
         motorSystem.addMotor("bottom_left_motor", false);
         motorSystem.addMotor("bottom_right_motor", true);
-        motorSystem.addMotor("arm_motor",true);
+        motorSystem.addMotor("arm_motor", true);
         servoSystem.addMotor("claw");
     }
 
