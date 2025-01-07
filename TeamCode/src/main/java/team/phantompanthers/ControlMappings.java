@@ -7,9 +7,6 @@ public enum ControlMappings {
     MOVEMENT_Y("left_stick_y"),
     TURN_LEFT("left_trigger"),
     TURN_RIGHT("right_trigger"),
-    EXTEND_ARM("right_trigger"),
-
-    UNEXTEND_ARM("left_trigger"),
     GRIP_CLAW("a"),
     RAISE_ARM("right_stick_y");
 

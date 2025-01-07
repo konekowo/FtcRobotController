@@ -1,4 +1,4 @@
-package team.phantompanthers
+package team.phantompanthers.part_specific
 
 import com.qualcomm.robotcore.hardware.DcMotor
 import com.qualcomm.robotcore.hardware.HardwareMap
@@ -32,34 +32,28 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
             }
         }
     }
-    fun addHexMotor(hexMotorName: String, isReversed: Boolean){
-        try {
-            val motor: DcMotor = hardwareMap.get(DcMotor::class.java, hexMotorName)
-            motors[hexMotorName] = motor
-            if (isReversed) {
-                reversedMotors.add(hexMotorName)
-            }
-        } catch (e: IllegalArgumentException) {
-            if (!warnedMotors.contains(hexMotorName)) {
-                telemetry.addLine("Warning: The Hex-motor '$hexMotorName' was not found! The motor will not be operating, and may cause problems with the OpCode.")
-                warnedMotors.add(hexMotorName)
-            }
-        }
-    }
 
     /**
-     * Get Motor Name
-     * @param motorName Name of the Motor
-     * @return name of the motor
+     * Get a Motor object.
+     * @param motorName The name of the motor.
+     * @return The Motor object.
      */
     fun getMotor(motorName: String): DcMotor? {
         return motors[motorName]
     }
 
     /**
-     * Sets the power of the motor
-     * @param motorName Name of the Motor
-     * @param power Power of the Motor
+     * Get all Motor objects registered to this MotorSystem.
+     * @return The Motor objects registered to this MotorSystem in a List.
+     */
+    fun getMotors(): List<DcMotor> {
+        return motors.values.toList()
+    }
+
+    /**
+     * Sets the power of a motor.
+     * @param motorName The name of the motor.
+     * @param power The power to set the motor to.
      */
     fun setPower(motorName: String, power: Double) {
         var convertedPower: Double = power
@@ -72,9 +66,9 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
     }
 
     /**
-     * Gets the power of the motor
-     * @param motorName Name of the Motor
-     * @return Power of the motor
+     * Gets the power of a motor.
+     * @param motorName The name of the motor.
+     * @return The power of the motor
      */
     fun getPower(motorName: String): Double {
         val motor: DcMotor = getMotor(motorName) ?: return 0.0
@@ -90,8 +84,8 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
     }
 
     /**
-     * Removes the motor and sets its power to zero.
-     * @param motorName Name of the Motor
+     * Removes a motor and sets its power to zero.
+     * @param motorName The name of the Motor.
      */
     fun removeMotor(motorName: String) {
         setPower(motorName, 0.0)
@@ -99,7 +93,7 @@ class MotorSystem(private val hardwareMap: HardwareMap, private val telemetry: T
     }
 
     /**
-     * Updates the motors that were changed with the changed speeds.
+     * Updates motors that were changed with the changed speeds.
      */
     fun updateMotors() {
         for (speed in speeds) {

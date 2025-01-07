@@ -2,172 +2,93 @@ package team.phantompanthers;
 
 import androidx.core.math.MathUtils;
 
-public class RobotActions {
+import com.qualcomm.robotcore.hardware.DcMotor;
 
-    /**
-     * Raise or lower the arms of the robot.
-     *
-     * @param power The speed at which to raise or lower it at. Negative power lowers it, positive power raises it.
-     * @param time  The time to raise for.
-     * The robotic arm to raise or lower.
-     */
-    public static void raiseArm(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("arm_extender", power);
-        if (time > 0) {
-            motorSystem.updateMotors();
-            sleep(time);
-        }
-    }
+import org.jetbrains.annotations.NotNull;
 
-    /**
-     * Extend or retract the arm.
-     *
-     * @param power how much the arm  will extend
-     *              The speed at which to extend the arm at. Negative power retracts it, positive power extends it.
-     */
-    public static void extendArm(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("arm_hex", power);
-        if (time > 0) {
-            motorSystem.updateMotors();
-            sleep(time);
-        }
-    }
-    public static void unextendArm(MotorSystem motorSystem, double power, long time) {
-        motorSystem.setPower("arm_hex", -power);
-        if (time > 0) {
-            motorSystem.updateMotors();
-            sleep(time);
-        }
-    }
-    /**
-     *
-     *
-     *
-     *
-     * @param servoSystem is the servo that is mapped
-     * @param position is how far the servo will rotation to 360 degrees
-     * @param time is how long it'll last.
-     */
-    public static void horizontalClaws(ServoOBJSystem servoSystem, double position, long time){
-        servoSystem.setPosition("claw", position);
-        if (time > 0) {
-            servoSystem.updateMotors();
-            sleep(time);
-        }
-    }
+import team.phantompanthers.part_specific.ClawState;
+import team.phantompanthers.part_specific.MotorSystem;
+import team.phantompanthers.part_specific.ServoSystem;
 
-    /**
-     *
-     * @param servoSystem is the servo that is mapped
-     * @param position is how far the servo will rotation to 360 degrees
-     * @param time is how long it'll last.
-     */
-    public static void verticalClaws(ServoOBJSystem servoSystem, boolean isPressed){
-        servoSystem.setPosition("claw", isPressed ? 0.6D : 0.1D);
-        servoSystem.updateMotors();
+public abstract class RobotActions {
+    protected final MotorSystem motorSystem;
+    protected final ServoSystem servoSystem;
+
+    public RobotActions(MotorSystem motorSystem, ServoSystem servoSystem) {
+        this.motorSystem = motorSystem;
+        this.servoSystem = servoSystem;
     }
 
     /**
      * Drive the robot in any direction.
-     *
-     * @param motorSystem The MotorSystem
-     * @param powerX      The x speed
-     * @param powerY      The y speed
-     * @param time        The time to drive for.
+     * @param powerX The x-speed at which the robot drives in.
+     * @param powerY The y-speed at which the robot drives in.
      */
-    public static void drive(MotorSystem motorSystem, double powerX, double powerY, long time) {
+    public void drive(double powerX, double powerY) {
         motorSystem.setPower("top_left_motor", MathUtils.clamp(-powerX + powerY, -1, 1));
         motorSystem.setPower("top_right_motor", -MathUtils.clamp(-powerX - powerY, -1, 1));
         motorSystem.setPower("bottom_left_motor", -MathUtils.clamp(-powerX - powerY, -1, 1));
         motorSystem.setPower("bottom_right_motor", MathUtils.clamp(-powerX + powerY, -1, 1));
-        if (time > 0) {
-            motorSystem.updateMotors();
-            sleep(time);
-            stopMotion(motorSystem);
-        }
     }
 
     /**
-     * Stops all motion on all motors.
-     *
-     * @param motorSystem The MotorSystem to stop all motors on.
+     * Rotate the robot counterclockwise.
+     * @param power The speed at which the robot rotates.
      */
-    public static void stopMotion(MotorSystem motorSystem) {
-        motorSystem.setPower("top_left_motor", 0);
-        motorSystem.setPower("top_right_motor", 0);
-        motorSystem.setPower("bottom_left_motor", 0);
-        motorSystem.setPower("bottom_right_motor", 0);
-        motorSystem.updateMotors();
-    }
-
-    /**
-     * Rotates the robot to the left.
-     *
-     * @param motorSystem The MotorSystem
-     * @param power       The speed to turn at.
-     * @param time        The time to turn for.
-     */
-    public static void driveTurnLeft(MotorSystem motorSystem, double power, long time) {
+    public void driveTurnLeft(double power) {
         if (power > 0) {
             motorSystem.setPower("top_left_motor", power);
             motorSystem.setPower("bottom_left_motor", power);
             motorSystem.setPower("top_right_motor", -power);
             motorSystem.setPower("bottom_right_motor", -power);
         }
-        if (time > 0) {
-            motorSystem.updateMotors();
-            sleep(time);
-            motorSystem.setPower("top_left_motor", 0);
-            motorSystem.setPower("bottom_left_motor", 0);
-            motorSystem.setPower("top_right_motor", 0);
-            motorSystem.setPower("bottom_right_motor", 0);
-            motorSystem.updateMotors();
-        }
     }
 
     /**
-     * Rotates the robot to the right.
-     *
-     * @param motorSystem The MotorSystem
-     * @param power       The speed to turn at.
-     * @param time        The time to turn for.
+     * Rotate the robot clockwise.
+     * @param power The speed at which the robot rotates.
      */
-    public static void driveTurnRight(MotorSystem motorSystem, double power, long time) {
+    public void driveTurnRight(double power) {
         if (power > 0) {
             motorSystem.setPower("top_right_motor", power);
             motorSystem.setPower("bottom_right_motor", power);
             motorSystem.setPower("top_left_motor", - power);
             motorSystem.setPower("bottom_left_motor", -power);
         }
-        if (time > 0) {
-            motorSystem.updateMotors();
-            sleep(time);
-            motorSystem.setPower("top_left_motor", 0);
-            motorSystem.setPower("bottom_left_motor", 0);
-            motorSystem.setPower("top_right_motor", 0);
-            motorSystem.setPower("bottom_right_motor", 0);
-            motorSystem.updateMotors();
-        }
     }
 
-    public static void moveArm(MotorSystem motorSystem, double power, long time) {
+    /**
+     * Move the arm up or down.
+     * @param power The speed at which to move the arm.
+     */
+    public void moveArm(double power) {
         motorSystem.setPower("arm_motor", -(power / 2f));
-        if (time > 0) {
-            motorSystem.updateMotors();
-            sleep(time);
-            motorSystem.setPower("arm_motor", 0);
-            motorSystem.updateMotors();
+    }
+
+    /**
+     * Open or close the claw.
+     * @param clawState Whether to open or close the claw.
+     */
+    public void setClawState(ClawState clawState){
+        servoSystem.setPosition("claw", clawState == ClawState.CLOSE ? 0.6D : 0.1D);
+    }
+
+    /**
+     * Stop all motion on all motors.
+     */
+    public void stopMotion() {
+        for (DcMotor motor : motorSystem.getMotors()) {
+            motorSystem.setPower(motor.getDeviceName(), 0);
         }
     }
 
     /**
-     * Suspends the current thread.
-     *
-     * @param milliseconds The time to suspend the thread for.
+     * Suspend the current thread for a specified amount of time.
+     * @param time The time in time to suspend the current thread for.
      */
-    public static void sleep(long milliseconds) {
+    public void sleep(long time) {
         try {
-            Thread.sleep(milliseconds);
+            Thread.sleep(time);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
