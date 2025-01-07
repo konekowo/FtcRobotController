@@ -16,7 +16,7 @@ public enum ControlMappings {
     /**
      * Constructor of ControlMappings
      *
-     * @param fieldName The fieldname of the Gamepad control to get.
+     * @param fieldName The field name of the Gamepad control to get.
      */
 
     ControlMappings(String fieldName) {
@@ -26,7 +26,7 @@ public enum ControlMappings {
     /**
      * Constructor of ControlMappings
      *
-     * @param fieldName     The fieldname of the Gamepad control to get.
+     * @param fieldName     The field name of the Gamepad control to get.
      * @param valueModifier A callback function that modifies the value returned.
      */
     ControlMappings(String fieldName, ICallback valueModifier) {
