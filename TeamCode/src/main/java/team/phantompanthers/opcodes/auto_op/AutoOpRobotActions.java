@@ -39,8 +39,4 @@ public class AutoOpRobotActions extends RobotActions {
         super.stopMotion();
         this.motorSystem.updateMotors();
     }
-
-    public void sleep(long time) {
-        super.sleep(time);
-    }
 }

@@ -85,17 +85,4 @@ public abstract class RobotActions {
         }
     }
 
-    /**
-     * Suspend the current thread for a specified amount of time.
-     *
-     * @param time The time in time to suspend the current thread for.
-     */
-    public void sleep(long time) {
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
 }

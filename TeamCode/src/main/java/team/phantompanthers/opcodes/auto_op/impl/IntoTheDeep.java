@@ -15,7 +15,7 @@ public class IntoTheDeep extends AutoOpCodeBase {
         waitForStart();
 
         robotActions.drive(0f, 1f);
-        robotActions.sleep(500L);
+        sleep(500L);
         robotActions.stopMotion();
     }
 }
