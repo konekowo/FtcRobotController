@@ -28,6 +28,8 @@ public class NormalFunction extends TeleOpCodeBase {
                 gripClawToggle = !gripClawToggle;
             }
 
+            telemetry.addData("X", ControlMappings.MOVEMENT_X.getFloat(gamepad1));
+            telemetry.addData("Y", ControlMappings.MOVEMENT_Y.getFloat(gamepad1));
             robotActions.drive(ControlMappings.MOVEMENT_X.getFloat(gamepad1),
                     ControlMappings.MOVEMENT_Y.getFloat(gamepad1));
             robotActions.driveTurnLeft(ControlMappings.TURN_LEFT.getFloat(gamepad1));
@@ -37,7 +39,7 @@ public class NormalFunction extends TeleOpCodeBase {
 
             motorSystem.updateMotors();
             servoSystem.updateServos();
-
+            telemetry.update();
             lastGripClawButtonPressed = isGripClawButtonPressed;
         }
     }

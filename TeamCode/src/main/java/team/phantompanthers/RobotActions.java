@@ -21,7 +21,7 @@ public abstract class RobotActions {
      * Drive the robot in any direction.
      *
      * @param powerX The x-speed at which the robot drives in.
-     * @param powerY The y-speed at which the robot drives in.
+     * @param powerY The y-speed at which the robot drives in. (Note: this is reversed)
      */
     public void drive(double powerX, double powerY) {
         motorSystem.setPower("top_left_motor", MathUtils.clamp(-powerX + powerY, -1, 1));
