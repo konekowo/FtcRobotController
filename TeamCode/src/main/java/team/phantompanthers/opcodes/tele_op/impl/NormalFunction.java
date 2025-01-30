@@ -37,7 +37,7 @@ public class NormalFunction extends TeleOpCodeBase {
             robotActions.setClawState(gripClawToggle ? ClawState.CLOSE : ClawState.OPEN);
             telemetry.addData("Claw State", (gripClawToggle ? ClawState.CLOSE : ClawState.OPEN).name());
             robotActions.moveArm(ControlMappings.RAISE_ARM.getFloat(gamepad1));
-            robotActions.moveHorizArm(ControlMappings.HORIZONTAL_ARM.getFloat(gamepad1));
+            robotActions.moveHorizArm(ControlMappings.HORIZONTAL_ARM.getFloat(gamepad2));
 
             motorSystem.updateMotors();
             servoSystem.updateServos();

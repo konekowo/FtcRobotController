@@ -9,7 +9,7 @@ public enum ControlMappings {
     TURN_RIGHT("right_trigger"),
     GRIP_CLAW("a"),
     RAISE_ARM("right_stick_y"),
-    HORIZONTAL_ARM("right_stick_x");
+    HORIZONTAL_ARM("right_stick_y");
 
     public final String fieldName;
     private final ICallback valueModifier;
