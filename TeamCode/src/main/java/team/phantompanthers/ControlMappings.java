@@ -8,7 +8,8 @@ public enum ControlMappings {
     TURN_LEFT("left_trigger"),
     TURN_RIGHT("right_trigger"),
     GRIP_CLAW("a"),
-    RAISE_ARM("right_stick_y");
+    RAISE_ARM("right_stick_y"),
+    HORIZONTAL_ARM("right_stick_x");
 
     public final String fieldName;
     private final ICallback valueModifier;

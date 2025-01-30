@@ -67,6 +67,10 @@ public abstract class RobotActions {
         motorSystem.setPower("arm_motor", -(power / 2f));
     }
 
+    public void moveHorizArm(double power) {
+        motorSystem.setPower("linear_arm", -(power / 2f));
+    }
+
     /**
      * Open or close the claw.
      *
@@ -75,6 +79,7 @@ public abstract class RobotActions {
     public void setClawState(ClawState clawState) {
         servoSystem.setPosition("claw", clawState == ClawState.CLOSE ? 0.6D : 0.1D);
     }
+
 
     /**
      * Stop all motion on all motors.
